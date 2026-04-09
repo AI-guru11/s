@@ -4,7 +4,7 @@
   GENERATED FILE — do not edit. Run: python build.py
 */
 
-const CACHE_VERSION = 'v30';
+const CACHE_VERSION = 'v31';
 const CACHE_NAME = `safi-pwa-${CACHE_VERSION}`;
 
 // Core assets (same-origin)
@@ -15,6 +15,7 @@ const CORE_ASSETS = [
 './portfolio.html',
 './services.html',
 './products.html',
+'./brief.html',
 './css/style.css',
 './js/app.js',
 './js/floating-glyphs.js',
