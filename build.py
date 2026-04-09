@@ -17,13 +17,14 @@ env = Environment(
     keep_trailing_newline=True,
 )
 
-CACHE_VERSION = 'v29'
+CACHE_VERSION = 'v30'
 
 CORE_ASSETS = [
     './',
     './index.html',
     './portfolio.html',
     './services.html',
+    './products.html',
     './css/style.css',
     './js/app.js',
     './js/floating-glyphs.js',
@@ -51,6 +52,7 @@ PAGES = [
     ('pages/index.html', ROOT / 'index.html'),
     ('pages/portfolio.html', ROOT / 'portfolio.html'),
     ('pages/services.html', ROOT / 'services.html'),
+    ('pages/products.html', ROOT / 'products.html'),
 ]
 
 print('Building Safi Group site...')
