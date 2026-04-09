@@ -1,0 +1,438 @@
+// ==============================================
+// بيانات المنتجات والتصنيفات
+// Products & Categories Data
+// ==============================================
+// يمكنك إضافة أو تعديل المنتجات بسهولة من هنا
+//
+// ═══════════════════════════════════════════════════════════════
+// كيفية إضافة منتج جديد:
+// ═══════════════════════════════════════════════════════════════
+// 1. انسخ قالب المنتج التالي وأضفه في نهاية مصفوفة products
+// 2. غيّر الـ id ليكون رقماً فريداً (أكبر من آخر id موجود)
+// 3. اختر category من القائمة: print, gifts, boards, rollup, exhibitions, illuminated
+// 4. اختر tag: 'best' للأكثر طلباً، 'new' للجديد، '' للعادي
+//
+// قالب منتج جديد:
+// {
+//   id: 25,                          // رقم فريد
+//   name: 'اسم المنتج',               // اسم المنتج بالعربي
+//   price: 100,                       // السعر بالريال
+//   originalPrice: 120,               // السعر قبل الخصم (اختياري)
+//   tag: 'new',                       // 'best' | 'new' | ''
+//   category: 'print',                // التصنيف
+//   icon: '📦',                       // إيموجي (يظهر إذا لم توجد صورة)
+//   image: '',                        // اسم ملف الصورة في assets/products/
+//   categoryName: 'طباعة',            // اسم التصنيف بالعربي
+//   description: 'وصف مختصر',         // وصف قصير
+//   features: ['ميزة 1', 'ميزة 2'],   // قائمة المميزات
+//   inStock: true,                    // متوفر أم لا
+//   rating: 4.5                       // التقييم من 5
+// }
+// ═══════════════════════════════════════════════════════════════
+
+const PRODUCTS_DATA = {
+
+  // مسار مجلد صور المنتجات
+  imagesPath: 'assets/products/',
+
+  // تصنيفات المنتجات
+  categories: [
+    { id: 'all', name: 'الكل', icon: '🏷️', count: 24 },
+    { id: 'print', name: 'طباعة', icon: '🖨️', count: 4 },
+    { id: 'gifts', name: 'هدايا', icon: '🎁', count: 4 },
+    { id: 'boards', name: 'لوحات', icon: '🪧', count: 4 },
+    { id: 'rollup', name: 'رول اب', icon: '📜', count: 4 },
+    { id: 'exhibitions', name: 'معارض', icon: '🎪', count: 4 },
+    { id: 'illuminated', name: 'لوحات مضيئة', icon: '💡', count: 4 }
+  ],
+
+  // قائمة المنتجات الكاملة
+  products: [
+    // ═══════════════════════════════════════
+    // قسم الطباعة (print)
+    // ═══════════════════════════════════════
+    {
+      id: 1,
+      name: 'كروت عمل (1000)',
+      price: 180,
+      originalPrice: 220,
+      tag: 'best',
+      category: 'print',
+      icon: '📇',
+      image: '',
+      categoryName: 'طباعة',
+      description: 'كروت عمل احترافية مطبوعة على ورق مقوى فاخر 350 جرام مع تشطيب لامع أو مطفي.',
+      features: ['ورق 350 جرام', 'طباعة وجهين', 'تشطيب لامع/مطفي', 'تصميم مجاني'],
+      inStock: true,
+      rating: 4.8
+    },
+    {
+      id: 2,
+      name: 'بروشور A4',
+      price: 250,
+      originalPrice: null,
+      tag: 'new',
+      category: 'print',
+      icon: '📄',
+      image: '',
+      categoryName: 'طباعة',
+      description: 'بروشورات إعلانية مطوية بجودة عالية، طباعة ملونة على الوجهين.',
+      features: ['طباعة ملونة', 'وجهين', 'ورق كوشيه 150g', 'طي مجاني'],
+      inStock: true,
+      rating: 4.5
+    },
+    {
+      id: 3,
+      name: 'فلاير A5 (500)',
+      price: 150,
+      originalPrice: 180,
+      tag: 'best',
+      category: 'print',
+      icon: '📋',
+      image: '',
+      categoryName: 'طباعة',
+      description: 'فلايرات دعائية مقاس A5 على ورق كوشيه لامع عالي الجودة.',
+      features: ['500 نسخة', 'ورق كوشيه لامع', 'ألوان زاهية', 'توصيل سريع'],
+      inStock: true,
+      rating: 4.7
+    },
+    {
+      id: 4,
+      name: 'ستيكر مقصوص',
+      price: 35,
+      originalPrice: null,
+      tag: 'new',
+      category: 'print',
+      icon: '🏷️',
+      image: '',
+      categoryName: 'طباعة',
+      description: 'ستيكرات مقصوصة بالشكل المطلوب، مقاومة للماء والخدش.',
+      features: ['مقاوم للماء', 'قص حسب الشكل', 'لاصق قوي', 'للمتر المربع'],
+      inStock: true,
+      rating: 4.6
+    },
+
+    // ═══════════════════════════════════════
+    // قسم الهدايا (gifts)
+    // ═══════════════════════════════════════
+    {
+      id: 5,
+      name: 'أقلام دعائية (50)',
+      price: 125,
+      originalPrice: 150,
+      tag: 'best',
+      category: 'gifts',
+      icon: '🖊️',
+      image: '',
+      categoryName: 'هدايا',
+      description: 'أقلام جاف عالية الجودة مع طباعة الشعار أو الاسم بالليزر.',
+      features: ['50 قلم', 'طباعة ليزر', 'ألوان متعددة', 'جودة عالية'],
+      inStock: true,
+      rating: 4.4
+    },
+    {
+      id: 6,
+      name: 'كوب سيراميك',
+      price: 25,
+      originalPrice: null,
+      tag: 'new',
+      category: 'gifts',
+      icon: '☕',
+      image: '',
+      categoryName: 'هدايا',
+      description: 'كوب سيراميك فاخر مع طباعة حرارية ثابتة لا تتأثر بالغسيل.',
+      features: ['سيراميك فاخر', 'طباعة ثابتة', 'آمن للغسالة', 'تصميم مخصص'],
+      inStock: true,
+      rating: 4.9
+    },
+    {
+      id: 7,
+      name: 'ميدالية مفاتيح',
+      price: 15,
+      originalPrice: 20,
+      tag: 'best',
+      category: 'gifts',
+      icon: '🔑',
+      image: '',
+      categoryName: 'هدايا',
+      description: 'ميدالية معدنية أنيقة مع طباعة أو حفر بالليزر.',
+      features: ['معدن فاخر', 'حفر ليزر', 'تصميم مخصص', 'تغليف أنيق'],
+      inStock: true,
+      rating: 4.3
+    },
+    {
+      id: 8,
+      name: 'تيشيرت مطبوع',
+      price: 45,
+      originalPrice: 55,
+      tag: 'new',
+      category: 'gifts',
+      icon: '👕',
+      image: '',
+      categoryName: 'هدايا',
+      description: 'تيشيرت قطن 100% مع طباعة DTF عالية الجودة.',
+      features: ['قطن 100%', 'طباعة DTF', 'مقاسات متعددة', 'ألوان ثابتة'],
+      inStock: true,
+      rating: 4.7
+    },
+
+    // ═══════════════════════════════════════
+    // قسم اللوحات (boards)
+    // ═══════════════════════════════════════
+    {
+      id: 9,
+      name: 'لوحة كلادينج',
+      price: 85,
+      originalPrice: 100,
+      tag: 'best',
+      category: 'boards',
+      icon: '🪧',
+      image: '',
+      categoryName: 'لوحات',
+      description: 'لوحات كلادينج للواجهات والمحلات، مقاومة للعوامل الجوية.',
+      features: ['مقاومة للطقس', 'ألوان ثابتة', 'تركيب احترافي', 'للمتر المربع'],
+      inStock: true,
+      rating: 4.8
+    },
+    {
+      id: 10,
+      name: 'لوحة فوم بورد',
+      price: 45,
+      originalPrice: null,
+      tag: 'new',
+      category: 'boards',
+      icon: '📐',
+      image: '',
+      categoryName: 'لوحات',
+      description: 'لوحات فوم بورد خفيفة الوزن للعروض الداخلية والمعارض.',
+      features: ['خفيفة الوزن', 'سهلة التركيب', 'للداخل', 'للمتر المربع'],
+      inStock: true,
+      rating: 4.2
+    },
+    {
+      id: 11,
+      name: 'لوحة أكريليك',
+      price: 120,
+      originalPrice: 150,
+      tag: 'best',
+      category: 'boards',
+      icon: '✨',
+      image: '',
+      categoryName: 'لوحات',
+      description: 'لوحات أكريليك شفافة أو ملونة بتصميم عصري وأنيق.',
+      features: ['شفاف/ملون', 'مظهر فاخر', 'متين', 'للمتر المربع'],
+      inStock: true,
+      rating: 4.9
+    },
+    {
+      id: 12,
+      name: 'بنر جداري',
+      price: 35,
+      originalPrice: null,
+      tag: 'new',
+      category: 'boards',
+      icon: '🖼️',
+      image: '',
+      categoryName: 'لوحات',
+      description: 'بنرات جدارية بطباعة عالية الدقة على خامة فينيل.',
+      features: ['طباعة HD', 'فينيل متين', 'للداخل والخارج', 'للمتر المربع'],
+      inStock: true,
+      rating: 4.5
+    },
+
+    // ═══════════════════════════════════════
+    // قسم رول اب (rollup)
+    // ═══════════════════════════════════════
+    {
+      id: 13,
+      name: 'رول أب عادي',
+      price: 280,
+      originalPrice: 320,
+      tag: 'best',
+      category: 'rollup',
+      icon: '📜',
+      image: '',
+      categoryName: 'رول اب',
+      description: 'ستاند رول أب قياسي 85x200 سم مع حقيبة حمل.',
+      features: ['85x200 سم', 'ستاند ألمنيوم', 'حقيبة حمل', 'سهل التركيب'],
+      inStock: true,
+      rating: 4.6
+    },
+    {
+      id: 14,
+      name: 'رول أب عريض',
+      price: 380,
+      originalPrice: null,
+      tag: 'new',
+      category: 'rollup',
+      icon: '📜',
+      image: '',
+      categoryName: 'رول اب',
+      description: 'ستاند رول أب عريض 100x200 سم للعروض الكبيرة.',
+      features: ['100x200 سم', 'عرض أكبر', 'ستاند متين', 'طباعة HD'],
+      inStock: true,
+      rating: 4.4
+    },
+    {
+      id: 15,
+      name: 'رول أب وجهين',
+      price: 450,
+      originalPrice: 520,
+      tag: 'best',
+      category: 'rollup',
+      icon: '🔄',
+      image: '',
+      categoryName: 'رول اب',
+      description: 'رول أب مزدوج يعرض تصميمين مختلفين من الجهتين.',
+      features: ['عرض وجهين', 'تصميمين مختلفين', 'ستاند قوي', 'حقيبة فاخرة'],
+      inStock: true,
+      rating: 4.8
+    },
+    {
+      id: 16,
+      name: 'X بانر',
+      price: 180,
+      originalPrice: null,
+      tag: 'new',
+      category: 'rollup',
+      icon: '❌',
+      image: '',
+      categoryName: 'رول اب',
+      description: 'ستاند X بانر اقتصادي 60x160 سم للمعارض والفعاليات.',
+      features: ['60x160 سم', 'اقتصادي', 'خفيف الوزن', 'سهل النقل'],
+      inStock: true,
+      rating: 4.1
+    },
+
+    // ═══════════════════════════════════════
+    // قسم المعارض (exhibitions)
+    // ═══════════════════════════════════════
+    {
+      id: 17,
+      name: 'بوب أب 3x3',
+      price: 1800,
+      originalPrice: 2200,
+      tag: 'best',
+      category: 'exhibitions',
+      icon: '🎪',
+      image: '',
+      categoryName: 'معارض',
+      description: 'جدارية بوب أب 3x3 متر للمعارض الكبرى مع إضاءة LED.',
+      features: ['3x3 متر', 'إضاءة LED', 'تركيب سريع', 'حقيبة سفر'],
+      inStock: true,
+      rating: 4.9
+    },
+    {
+      id: 18,
+      name: 'كاونتر عرض',
+      price: 950,
+      originalPrice: null,
+      tag: 'new',
+      category: 'exhibitions',
+      icon: '🛒',
+      image: '',
+      categoryName: 'معارض',
+      description: 'طاولة استقبال للمعارض مع رفوف داخلية وطباعة كاملة.',
+      features: ['رفوف داخلية', 'طباعة 360°', 'سهل الفك', 'متين'],
+      inStock: true,
+      rating: 4.5
+    },
+    {
+      id: 19,
+      name: 'خيمة ترويجية',
+      price: 2500,
+      originalPrice: 3000,
+      tag: 'best',
+      category: 'exhibitions',
+      icon: '⛺',
+      image: '',
+      categoryName: 'معارض',
+      description: 'خيمة 3x3 متر مطبوعة بالكامل مع هيكل ألمنيوم قوي.',
+      features: ['3x3 متر', 'طباعة كاملة', 'هيكل ألمنيوم', 'مقاومة للماء'],
+      inStock: true,
+      rating: 4.7
+    },
+    {
+      id: 20,
+      name: 'فلاق بانر',
+      price: 350,
+      originalPrice: null,
+      tag: 'new',
+      category: 'exhibitions',
+      icon: '🚩',
+      image: '',
+      categoryName: 'معارض',
+      description: 'علم ريشة 3 متر للفعاليات الخارجية مع قاعدة ثابتة.',
+      features: ['ارتفاع 3 متر', 'طباعة وجهين', 'قاعدة ثابتة', 'مقاوم للرياح'],
+      inStock: true,
+      rating: 4.3
+    },
+
+    // ═══════════════════════════════════════
+    // قسم اللوحات المضيئة (illuminated)
+    // ═══════════════════════════════════════
+    {
+      id: 21,
+      name: 'لوحة نيون LED',
+      price: 350,
+      originalPrice: 420,
+      tag: 'best',
+      category: 'illuminated',
+      icon: '⚡',
+      image: '',
+      categoryName: 'لوحات مضيئة',
+      description: 'لوحة نيون LED مرنة بتصميم مخصص وإضاءة جذابة.',
+      features: ['LED مرن', 'تصميم مخصص', 'استهلاك منخفض', 'عمر طويل'],
+      inStock: true,
+      rating: 4.9
+    },
+    {
+      id: 22,
+      name: 'لوحة Open',
+      price: 250,
+      originalPrice: null,
+      tag: 'new',
+      category: 'illuminated',
+      icon: '💡',
+      image: '',
+      categoryName: 'لوحات مضيئة',
+      description: 'لوحة OPEN مضيئة جاهزة للمحلات التجارية.',
+      features: ['جاهزة للاستخدام', 'LED موفر', 'سهلة التركيب', 'ألوان متعددة'],
+      inStock: true,
+      rating: 4.4
+    },
+    {
+      id: 23,
+      name: 'لايت بوكس',
+      price: 180,
+      originalPrice: 220,
+      tag: 'best',
+      category: 'illuminated',
+      icon: '💠',
+      image: '',
+      categoryName: 'لوحات مضيئة',
+      description: 'صندوق إضاءة LED مع طباعة شفافة عالية الجودة.',
+      features: ['إضاءة موحدة', 'تغيير سهل', 'للمتر المربع', 'إطار ألمنيوم'],
+      inStock: true,
+      rating: 4.6
+    },
+    {
+      id: 24,
+      name: 'حروف بارزة مضيئة',
+      price: 95,
+      originalPrice: null,
+      tag: 'new',
+      category: 'illuminated',
+      icon: '🔤',
+      image: '',
+      categoryName: 'لوحات مضيئة',
+      description: 'حروف ثلاثية الأبعاد مضيئة بـ LED للواجهات.',
+      features: ['3D', 'إضاءة أمامية/خلفية', 'للحرف الواحد', 'ألوان متعددة'],
+      inStock: false,
+      rating: 4.8
+    }
+  ]
+};
+
+// تصدير للاستخدام العام
+window.PRODUCTS_DATA = PRODUCTS_DATA;

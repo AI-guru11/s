@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block page_title %}خدماتنا — Safi Group{% endblock %}
+{% block page_description %}حلول إبداعية متكاملة من التصميم إلى التسويق والطباعة — خدمات مجموعة الصافي الشاملة{% endblock %}
+
+{% block pre_app_scripts %}
+    <!-- ملفات البيانات -->
+    <script src="data/config.js"></script>
+    <script src="data/services.js"></script>
+
+    <!-- منطق التطبيق -->
+{% endblock %}
+
+{% block content %}
+        <!-- Hero Section -->
+        <div class="mb-16 text-center" data-reveal>
+            <nav class="flex items-center justify-center gap-2 text-sm text-[color:var(--muted)] mb-6">
+                <a href="index.html" class="hover:text-[color:var(--fg)] transition">الرئيسية</a>
+                <span>/</span>
+                <span class="text-[color:var(--fg)] font-bold">الخدمات</span>
+            </nav>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">
+                <span class="text-brand-red">خدماتنا</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-[color:var(--muted)] max-w-2xl mx-auto">
+                حلول إبداعية شاملة تلبي جميع احتياجاتك التسويقية والإعلانية
+            </p>
+        </div>
+
+        <!-- Services Sections -->
+        <div x-data="{
+            get services() {
+                return window.SERVICES_DATA?.mainServices || [];
+            }
+        }">
+            <template x-for="pillar in services" :key="pillar.id">
+                <section class="mb-16" data-reveal>
+                    <!-- Pillar Header -->
+                    <div class="noise rounded-[2rem] backdrop-blur-md shadow-glass p-6 sm:p-8 mb-6" :class="'bg-gradient-to-br ' + pillar.gradient">
+                        <div class="flex items-start gap-4">
+                            <div class="text-6xl sm:text-7xl" x-text="pillar.icon"></div>
+                            <div class="flex-1">
+                                <h2 class="text-3xl sm:text-4xl font-black text-white mb-2" x-text="pillar.title"></h2>
+                                <p class="text-sm sm:text-base text-white/80 uppercase tracking-wide mb-3" x-text="pillar.titleEn"></p>
+                                <p class="text-base sm:text-lg text-white/90" x-text="pillar.description"></p>
+                                <div class="mt-4 inline-block px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-bold">
+                                    <span x-text="pillar.services.length"></span> خدمة
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-Services Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <template x-for="service in pillar.services" :key="service.name">
+                            <article class="noise rounded-2xl backdrop-blur-md shadow-glass p-6 hover:scale-105 transition-all duration-300 text-center">
+                                <div class="text-4xl mb-3" x-text="service.icon"></div>
+                                <h4 class="text-base font-bold text-[color:var(--fg)] mb-2 line-clamp-2" x-text="service.name"></h4>
+                                <p class="text-xs text-[color:var(--muted)] line-clamp-2" x-text="service.desc"></p>
+                            </article>
+                        </template>
+                    </div>
+                </section>
+            </template>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-20 text-center" data-reveal>
+            <div class="noise rounded-[2rem] backdrop-blur-md shadow-glass p-8 sm:p-12">
+                <h2 class="text-3xl sm:text-4xl font-black mb-4">جاهز للبدء؟</h2>
+                <p class="text-lg text-[color:var(--muted)] mb-8 max-w-2xl mx-auto">
+                    ابدأ رحلتك معنا اليوم واكتشف كيف يمكننا تحويل أفكارك إلى واقع مبهر
+                </p>
+                <a href="index.html#brief" class="inline-flex items-center gap-3 rounded-2xl px-8 py-4 text-lg font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-105">
+                    <span>ابدأ مشروعك الآن</span>
+                    <svg class="w-6 h-6 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+{% endblock %}

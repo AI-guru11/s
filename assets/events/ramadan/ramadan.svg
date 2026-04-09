@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Outer glow -->
+    <filter id="moonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0.95
+                0 1 0 0 0.85
+                0 0 1 0 0.55
+                0 0 0 0.6 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Halo bloom behind moon -->
+    <radialGradient id="haloGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F5E6A3" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#D4A843" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Moon surface gradient -->
+    <radialGradient id="moonSurface" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#FFF8DC"/>
+      <stop offset="40%" stop-color="#F5E6A3"/>
+      <stop offset="75%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#A67C28"/>
+    </radialGradient>
+    <!-- Specular highlight -->
+    <radialGradient id="specular" cx="35%" cy="30%" r="30%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Crescent mask: large circle minus offset circle -->
+    <mask id="crescentMask">
+      <rect width="200" height="200" fill="black"/>
+      <circle cx="100" cy="100" r="60" fill="white"/>
+      <circle cx="125" cy="90" r="50" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Soft halo bloom -->
+  <circle cx="100" cy="100" r="95" fill="url(#haloGrad)"/>
+
+  <!-- Main crescent body -->
+  <g filter="url(#moonGlow)" mask="url(#crescentMask)">
+    <circle cx="100" cy="100" r="60" fill="url(#moonSurface)"/>
+    <!-- Specular layer -->
+    <circle cx="100" cy="100" r="60" fill="url(#specular)"/>
+  </g>
+
+  <!-- Small decorative star -->
+  <circle cx="140" cy="60" r="2.5" fill="#FFF8DC" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="60" r="0.8" fill="#FFFFFF"/>
+</svg>

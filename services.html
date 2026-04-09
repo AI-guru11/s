@@ -1,0 +1,261 @@
+<!doctype html>
+<!-- GENERATED FILE — do not edit. Edit templates/ then run: python build.py -->
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <title>خدماتنا — Safi Group</title>
+    <meta name="description" content="حلول إبداعية متكاملة من التصميم إلى التسويق والطباعة — خدمات مجموعة الصافي الشاملة" />
+    <meta name="theme-color" content="#080809" />
+
+    <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { taj: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        'brand-red': '#E53935',
+                        'brand-red-light': '#EF5350',
+                        'brand-red-dark': '#C62828',
+                        'mint': '#81D8D0',
+                        'mint-dark': '#00C88C',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.30)',
+                        'glow-red': '0 0 20px rgba(229, 57, 53, 0.20)',
+                        'glow-mint': '0 0 20px rgba(129, 216, 208, 0.20)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    
+    <!-- ملفات البيانات -->
+    <script src="data/config.js"></script>
+    <script src="data/services.js"></script>
+
+    <!-- منطق التطبيق -->
+
+    <script src="js/app.js"></script>
+    
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-taj bg-[color:var(--bg)] text-[color:var(--fg)] selection:bg-brand-red/30 selection:text-white transition-colors duration-500" x-data="fikraApp()" x-init="init()">
+
+
+
+
+    <!-- Background -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 transition-colors duration-500" style="background: radial-gradient(1200px 600px at 80% 10%, var(--glow-mint), transparent 60%), radial-gradient(1000px 500px at 20% 20%, var(--glow-red), transparent 55%), linear-gradient(to bottom, var(--bg), var(--bg2));"></div>
+        <div class="absolute inset-0 opacity-10 dark:opacity-20" style="background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(closest-side, rgba(0,0,0,.9), transparent 78%);"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header sticky top-0 z-50 bg-[color:var(--bg)]/80 backdrop-blur-md border-b border-[color:var(--border)] transition-all duration-300"
+        :style="`--shrink:${headerShrink}`" :class="{'py-2': headerShrink > 0.5, 'py-4': headerShrink <= 0.5}">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="header-row flex items-center justify-between">
+                <a href="index.html" class="group inline-flex items-center gap-3">
+                    <img src="assets/logo.webp" alt="Safi Group Logo" class="w-10 h-10 rounded-xl object-contain bg-white/5 ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <span class="leading-tight">
+                        <span class="block text-lg font-extrabold tracking-tight" x-text="SITE_CONFIG.brand.name"></span>
+                        <span class="block text-[11px] text-[color:var(--muted)] tracking-widest" x-text="SITE_CONFIG.brand.tagline"></span>
+                    </span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[color:var(--muted)]">
+                    <a class="hover:text-[color:var(--fg)] transition" href="services.html">الخدمات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#products">المنتجات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="portfolio.html">أعمالنا</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#brief">البرف</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#contact">تواصل</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" class="group relative inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-sm ring-1 ring-[color:var(--border)] hover:ring-[color:var(--fg)]/20 transition bg-[color:var(--card)]" @click="toggleTheme()">
+                        <span class="relative grid h-6 w-6 place-items-center">
+                            <svg class="h-5 w-5 text-[color:var(--fg)]" viewBox="0 0 24 24" fill="none"><path d="M12 3.5c3 0 5.5 2.4 5.5 5.4 0 2-1.1 3.8-2.8 4.8-.4.2-.7.7-.7 1.2V16a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1.1c0-.5-.3-1-.7-1.2C7.6 12.7 6.5 10.9 6.5 8.9 6.5 5.9 9 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 19h4M10.7 21h2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] shadow-lg hover:bg-[color:var(--card)]/90 transition" @click="mobileOpen = true">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-50 md:hidden" x-cloak>
+            <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" @click="mobileOpen = false"></div>
+            <div class="fixed top-0 left-0 bottom-0 w-full max-w-sm bg-[color:var(--bg)] border-l border-[color:var(--border)] shadow-2xl" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+                <div class="flex items-center justify-between p-4 border-b border-[color:var(--border)]">
+                    <span class="text-lg font-bold" x-text="SITE_CONFIG.brand.name"></span>
+                    <button @click="mobileOpen = false" class="p-2 rounded-lg hover:bg-[color:var(--card)]">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <nav class="p-4 space-y-2">
+                    <a href="services.html" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">الخدمات</a>
+                    <a href="index.html#products" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">المنتجات</a>
+                    <a href="portfolio.html" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">أعمالنا</a>
+                    <a href="index.html#brief" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">البرف</a>
+                    <a href="index.html#contact" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">تواصل</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+
+<main class="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-20">
+    
+        <!-- Hero Section -->
+        <div class="mb-16 text-center" data-reveal>
+            <nav class="flex items-center justify-center gap-2 text-sm text-[color:var(--muted)] mb-6">
+                <a href="index.html" class="hover:text-[color:var(--fg)] transition">الرئيسية</a>
+                <span>/</span>
+                <span class="text-[color:var(--fg)] font-bold">الخدمات</span>
+            </nav>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">
+                <span class="text-brand-red">خدماتنا</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-[color:var(--muted)] max-w-2xl mx-auto">
+                حلول إبداعية شاملة تلبي جميع احتياجاتك التسويقية والإعلانية
+            </p>
+        </div>
+
+        <!-- Services Sections -->
+        <div x-data="{
+            get services() {
+                return window.SERVICES_DATA?.mainServices || [];
+            }
+        }">
+            <template x-for="pillar in services" :key="pillar.id">
+                <section class="mb-16" data-reveal>
+                    <!-- Pillar Header -->
+                    <div class="noise rounded-[2rem] backdrop-blur-md shadow-glass p-6 sm:p-8 mb-6" :class="'bg-gradient-to-br ' + pillar.gradient">
+                        <div class="flex items-start gap-4">
+                            <div class="text-6xl sm:text-7xl" x-text="pillar.icon"></div>
+                            <div class="flex-1">
+                                <h2 class="text-3xl sm:text-4xl font-black text-white mb-2" x-text="pillar.title"></h2>
+                                <p class="text-sm sm:text-base text-white/80 uppercase tracking-wide mb-3" x-text="pillar.titleEn"></p>
+                                <p class="text-base sm:text-lg text-white/90" x-text="pillar.description"></p>
+                                <div class="mt-4 inline-block px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-bold">
+                                    <span x-text="pillar.services.length"></span> خدمة
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-Services Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <template x-for="service in pillar.services" :key="service.name">
+                            <article class="noise rounded-2xl backdrop-blur-md shadow-glass p-6 hover:scale-105 transition-all duration-300 text-center">
+                                <div class="text-4xl mb-3" x-text="service.icon"></div>
+                                <h4 class="text-base font-bold text-[color:var(--fg)] mb-2 line-clamp-2" x-text="service.name"></h4>
+                                <p class="text-xs text-[color:var(--muted)] line-clamp-2" x-text="service.desc"></p>
+                            </article>
+                        </template>
+                    </div>
+                </section>
+            </template>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-20 text-center" data-reveal>
+            <div class="noise rounded-[2rem] backdrop-blur-md shadow-glass p-8 sm:p-12">
+                <h2 class="text-3xl sm:text-4xl font-black mb-4">جاهز للبدء؟</h2>
+                <p class="text-lg text-[color:var(--muted)] mb-8 max-w-2xl mx-auto">
+                    ابدأ رحلتك معنا اليوم واكتشف كيف يمكننا تحويل أفكارك إلى واقع مبهر
+                </p>
+                <a href="index.html#brief" class="inline-flex items-center gap-3 rounded-2xl px-8 py-4 text-lg font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-105">
+                    <span>ابدأ مشروعك الآن</span>
+                    <svg class="w-6 h-6 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+</main>
+
+
+
+    <!-- WhatsApp Widget -->
+    <div class="wa-widget" x-data="whatsappWidget()" x-init="init()">
+        <div class="wa-widget-popup" x-show="isOpen" x-transition x-cloak @click.outside="close()">
+            <div class="wa-widget-header">
+                <button class="wa-widget-close" @click="close()">✕</button>
+                <div class="wa-widget-header-title">مرحباً! 👋</div>
+                <div class="wa-widget-header-subtitle">كيف يمكننا مساعدتك؟</div>
+            </div>
+            <div class="wa-widget-body">
+                <div class="wa-widget-quick-msgs">
+                    <template x-for="msg in quickMessages" :key="msg">
+                        <button class="wa-widget-quick-msg" @click="sendMessage(msg)" x-text="msg"></button>
+                    </template>
+                </div>
+                <div class="wa-widget-input-row">
+                    <input type="text" class="wa-widget-input" placeholder="أو اكتب رسالتك..." x-model="message" @keyup.enter="sendMessage()">
+                    <button class="wa-widget-send" @click="sendMessage()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="wa-widget-btn" @click="toggle()">
+            <div class="wa-widget-pulse"></div>
+            <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </button>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-[color:var(--border)]">
+        <div class="text-center space-y-4">
+            <a href="index.html" class="inline-flex items-center gap-2 text-brand-red hover:text-brand-red-light transition font-bold">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span>العودة للرئيسية</span>
+            </a>
+            <div class="text-sm text-[color:var(--muted)]">
+                © <span x-text="new Date().getFullYear()"></span> Safi Group. جميع الحقوق محفوظة
+            </div>
+        </div>
+    </footer>
+
+
+
+
+</body>
+</html>

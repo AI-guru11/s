@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block page_title %}أعمالنا — Safi Group{% endblock %}
+{% block page_description %}مشاريع منجزة بنجاح تعكس خبرتنا وإبداعنا — معرض أعمال مجموعة الصافي{% endblock %}
+
+{% block pre_app_scripts %}
+    <!-- ملفات البيانات -->
+    <script src="data/config.js"></script>
+    <script src="data/portfolio.js"></script>
+
+    <!-- منطق التطبيق -->
+{% endblock %}
+
+{% block content %}
+        <!-- Hero Section -->
+        <div class="mb-16 text-center" data-reveal>
+            <nav class="flex items-center justify-center gap-2 text-sm text-[color:var(--muted)] mb-6">
+                <a href="index.html" class="hover:text-[color:var(--fg)] transition">الرئيسية</a>
+                <span>/</span>
+                <span class="text-[color:var(--fg)] font-bold">أعمالنا</span>
+            </nav>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-4">
+                <span class="text-brand-red">أعمالنا</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-[color:var(--muted)] max-w-2xl mx-auto">
+                مشاريع منجزة بنجاح تعكس خبرتنا وإبداعنا
+            </p>
+        </div>
+
+        <!-- Portfolio Content -->
+        <div x-data="{
+            activeFilter: 'all',
+            get categories() {
+                return window.PORTFOLIO_DATA?.workCategories || [];
+            },
+            get works() {
+                return window.PORTFOLIO_DATA?.ourWorks || [];
+            },
+            get filteredWorks() {
+                if (this.activeFilter === 'all') return this.works;
+                return this.works.filter(w => w.category === this.activeFilter);
+            }
+        }">
+            <!-- Category Filter Tabs -->
+            <div class="mb-12 flex flex-wrap items-center justify-center gap-3" data-reveal>
+                <button
+                    @click="activeFilter = 'all'"
+                    :class="activeFilter === 'all' ? 'bg-gradient-to-l from-mint to-brand-red text-white border-transparent shadow-glow-red' : 'bg-[color:var(--card)] text-[color:var(--muted)] border-[color:var(--border)]'"
+                    class="px-6 py-3 rounded-2xl border font-bold transition-all hover:scale-105">
+                    <span>الكل</span>
+                    <span class="mr-2 text-sm opacity-80">(<span x-text="works.length"></span>)</span>
+                </button>
+                <template x-for="cat in categories" :key="cat.id">
+                    <button
+                        @click="activeFilter = cat.id"
+                        :class="activeFilter === cat.id ? 'bg-gradient-to-l from-mint to-brand-red text-white border-transparent shadow-glow-red' : 'bg-[color:var(--card)] text-[color:var(--muted)] border-[color:var(--border)]'"
+                        class="px-6 py-3 rounded-2xl border font-bold transition-all hover:scale-105 flex items-center gap-2">
+                        <span x-text="cat.icon"></span>
+                        <span x-text="cat.name"></span>
+                        <span class="text-sm opacity-80">(<span x-text="works.filter(w => w.category === cat.id).length"></span>)</span>
+                    </button>
+                </template>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="masonry-grid" data-reveal>
+                <template x-for="work in filteredWorks" :key="work.id">
+                    <article class="noise masonry-item rounded-[2rem] backdrop-blur-md shadow-glass overflow-hidden hover:scale-[1.02] transition-all duration-300" :class="work.id % 3 === 0 ? 'masonry-item-wide' : (work.id % 5 === 0 ? 'masonry-item-tall' : '')">
+                        <!-- Work Gradient Background -->
+                        <div class="relative h-full flex flex-col">
+                            <div class="relative flex-shrink-0 h-64 flex items-center justify-center" :style="'background: ' + work.gradient">
+                                <span class="text-7xl" x-text="work.icon"></span>
+
+                                <!-- Tags Overlay -->
+                                <div class="absolute bottom-4 left-4 right-4 flex gap-2 flex-wrap">
+                                    <template x-for="tag in work.tags" :key="tag">
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-black/50 backdrop-blur-sm text-white border border-white/20" x-text="tag"></span>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- Work Content -->
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="text-xl font-black text-[color:var(--fg)] mb-3" x-text="work.title"></h3>
+                                <p class="text-sm text-[color:var(--muted)] line-clamp-3 flex-1" x-text="work.description"></p>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="filteredWorks.length === 0" class="text-center py-20" data-reveal>
+                <div class="text-6xl mb-4">🔍</div>
+                <p class="text-xl text-[color:var(--muted)]">لا توجد مشاريع في هذا التصنيف</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-20 text-center" data-reveal>
+            <div class="noise rounded-[2rem] backdrop-blur-md shadow-glass p-8 sm:p-12">
+                <h2 class="text-3xl sm:text-4xl font-black mb-4">ابدأ مشروعك القادم</h2>
+                <p class="text-lg text-[color:var(--muted)] mb-8 max-w-2xl mx-auto">
+                    دعنا نحول رؤيتك إلى واقع مذهل — تواصل معنا اليوم
+                </p>
+                <a href="index.html#brief" class="inline-flex items-center gap-3 rounded-2xl px-8 py-4 text-lg font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-105">
+                    <span>ابدأ الآن</span>
+                    <svg class="w-6 h-6 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+{% endblock %}

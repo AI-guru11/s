@@ -1,0 +1,146 @@
+// ==============================================
+// بيانات الخدمات
+// Services Data
+// ==============================================
+// يمكنك إضافة أو تعديل الخدمات بسهولة من هنا
+
+const SERVICES_DATA = {
+
+  // ═══════════════════════════════════════
+  // الخدمات الرئيسية (Main Service Pillars)
+  // ═══════════════════════════════════════
+  mainServices: [
+    {
+      id: 'creative-design',
+      title: 'تصميم إبداعي',
+      titleEn: 'Creative Design',
+      icon: '🎨',
+      gradient: 'from-emerald-900 via-teal-900 to-slate-900',
+      description: 'تصاميم تعكس هويتك وتميزك في السوق',
+      services: [
+        { name: 'الهوية البصرية', icon: '✨', desc: 'شعارات وأنظمة بصرية متكاملة' },
+        { name: 'حملات إعلانية', icon: '📢', desc: 'تصاميم إبداعية للحملات الترويجية' },
+        { name: 'إدارة السوشيال ميديا', icon: '📱', desc: 'محتوى بصري احترافي' },
+        { name: 'رسم رقمي', icon: '🖌️', desc: 'رسوم توضيحية مخصصة' },
+        { name: 'تصميم التغليف', icon: '📦', desc: 'عبوات منتجات جذابة' },
+        { name: 'تصميم الموشن', icon: '🎬', desc: 'فيديوهات متحركة احترافية' }
+      ]
+    },
+    {
+      id: 'marketing',
+      title: 'تسويق',
+      titleEn: 'Marketing',
+      icon: '📊',
+      gradient: 'from-[#2c2c2c] via-[#1a1a1a] to-black',
+      description: 'استراتيجيات تسويقية فعالة لنمو أعمالك',
+      services: [
+        { name: 'استراتيجية تسويقية', icon: '🎯', desc: 'خطط تسويقية متكاملة' },
+        { name: 'إدارة حسابات التواصل', icon: '💬', desc: 'إدارة احترافية للمنصات' },
+        { name: 'تحسين محركات البحث', icon: '🔍', desc: 'SEO وتصدر نتائج البحث' },
+        { name: 'إعلانات جوجل', icon: '🌐', desc: 'حملات Google Ads مستهدفة' }
+      ]
+    },
+    {
+      id: 'advertising-printing',
+      title: 'إعلان وطباعة',
+      titleEn: 'Advertising & Printing',
+      icon: '🖨️',
+      gradient: 'from-rose-900 via-red-950 to-black',
+      description: 'حلول إعلانية وطباعة شاملة لجميع احتياجاتك',
+      services: [
+        { name: 'لوحات ثلاثية الأبعاد', icon: '🪧', desc: 'لوحات 3D بارزة' },
+        { name: 'لوحات المشاريع', icon: '🏗️', desc: 'لوحات إعلانية للمشاريع' },
+        { name: 'لوحات توتم', icon: '📍', desc: 'أعمدة إعلانية قائمة' },
+        { name: 'لوحات بايلون', icon: '🗼', desc: 'لوحات مرتفعة للطرق' },
+        { name: 'لوحات باك لايت', icon: '💡', desc: 'لوحات مضيئة خلفية' },
+        { name: 'ستيكرات السيارات', icon: '🚗', desc: 'لاصقات دعائية للمركبات' },
+        { name: 'ستيكرات الجدران', icon: '🧱', desc: 'لاصقات جدارية كبيرة' },
+        { name: 'ستيكرات الأرضيات', icon: '⬇️', desc: 'لاصقات أرضية مقاومة' },
+        { name: 'ستيكرات الزجاج', icon: '🪟', desc: 'لاصقات شفافة للواجهات' },
+        { name: 'طباعة ديجيتال', icon: '🖨️', desc: 'طباعة رقمية عالية الجودة' },
+        { name: 'طباعة أوفست', icon: '📰', desc: 'طباعة كميات كبيرة' },
+        { name: 'تجهيز المعارض', icon: '🎪', desc: 'ستاندات ومعارض متكاملة' },
+        { name: 'هدايا إعلانية', icon: '🎁', desc: 'منتجات دعائية مخصصة' },
+        { name: 'سياج مشاريع إعلاني', icon: '🚧', desc: 'أسوار دعائية للمشاريع' }
+      ]
+    }
+  ],
+
+  // لماذا الصافي - النقاط الرئيسية
+  whySafi: [
+    {
+      title: 'Speed/الكفاءة والسرعة',
+      description: 'نعمل بوضوح وكفاءة: ننتقل بك من الفكرة إلى النموذج، ثم التسليم.',
+      color: 'fikra-red' // fikra-red | fikra-mint | gray-400
+    },
+    {
+      title: 'Craft - دقة التنفيذ',
+      description: 'يكمن السر في التفاصيل: نعتني بضبط العناصر وأدق التفاصيل.',
+      color: 'fikra-mint'
+    },
+    {
+      title: 'Results/النتائج',
+      description: 'نصمم لتحقيق الأهداف.',
+      color: 'gray-400'
+    }
+  ],
+
+  // تصنيفات مستكشف الذوق
+  briefCategories: [
+    {
+      id: 'decor',
+      title: 'ديكور وتصميم',
+      description: 'تصميم داخلي، واجهات، مساحات تجارية.',
+      icon: '🏠',
+      bgIcon: '🏗️',
+      gradient: 'from-[#2c2c2c] via-[#1a1a1a] to-black',
+      hoverColor: 'fikra-red'
+    },
+    {
+      id: 'branding',
+      title: 'هوية بصرية',
+      description: 'شعارات، هوية شركات، مطبوعات.',
+      icon: '✨',
+      bgIcon: '🎨',
+      gradient: 'from-emerald-900 via-teal-900 to-slate-900',
+      hoverColor: 'fikra-mint'
+    },
+    {
+      id: 'events',
+      title: 'تنظيم فعاليات',
+      description: 'مؤتمرات، معارض، حفلات، مسارح.',
+      icon: '🎪',
+      bgIcon: '🎉',
+      gradient: 'from-rose-900 via-red-950 to-black',
+      hoverColor: 'yellow-400'
+    }
+  ],
+
+  // أنماط التصميم
+  briefStyles: [
+    {
+      id: 'modern',
+      title: 'مودرن / بسيط',
+      description: 'خطوط نظيفة، مساحات بيضاء.',
+      icon: '☁️',
+      color: 'fikra-mint'
+    },
+    {
+      id: 'classic',
+      title: 'كلاسيكي / فخم',
+      description: 'تفاصيل غنية، زخارف، ألوان دافئة.',
+      icon: '🏛️',
+      color: 'yellow-500'
+    },
+    {
+      id: 'neon',
+      title: 'نيون / جريء',
+      description: 'إضاءة عالية، طابع شبابي.',
+      icon: '⚡',
+      color: 'fikra-red'
+    }
+  ]
+};
+
+// تصدير للاستخدام العام
+window.SERVICES_DATA = SERVICES_DATA;

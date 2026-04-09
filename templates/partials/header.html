@@ -1,0 +1,60 @@
+    <!-- Background -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute inset-0 transition-colors duration-500" style="background: radial-gradient(1200px 600px at 80% 10%, var(--glow-mint), transparent 60%), radial-gradient(1000px 500px at 20% 20%, var(--glow-red), transparent 55%), linear-gradient(to bottom, var(--bg), var(--bg2));"></div>
+        <div class="absolute inset-0 opacity-10 dark:opacity-20" style="background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(closest-side, rgba(0,0,0,.9), transparent 78%);"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header sticky top-0 z-50 bg-[color:var(--bg)]/80 backdrop-blur-md border-b border-[color:var(--border)] transition-all duration-300"
+        :style="`--shrink:${headerShrink}`" :class="{'py-2': headerShrink > 0.5, 'py-4': headerShrink <= 0.5}">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="header-row flex items-center justify-between">
+                <a href="index.html" class="group inline-flex items-center gap-3">
+                    <img src="assets/logo.webp" alt="Safi Group Logo" class="w-10 h-10 rounded-xl object-contain bg-white/5 ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <span class="leading-tight">
+                        <span class="block text-lg font-extrabold tracking-tight" x-text="SITE_CONFIG.brand.name"></span>
+                        <span class="block text-[11px] text-[color:var(--muted)] tracking-widest" x-text="SITE_CONFIG.brand.tagline"></span>
+                    </span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[color:var(--muted)]">
+                    <a class="hover:text-[color:var(--fg)] transition" href="services.html">الخدمات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#products">المنتجات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="portfolio.html">أعمالنا</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#brief">البرف</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="index.html#contact">تواصل</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" class="group relative inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-sm ring-1 ring-[color:var(--border)] hover:ring-[color:var(--fg)]/20 transition bg-[color:var(--card)]" @click="toggleTheme()">
+                        <span class="relative grid h-6 w-6 place-items-center">
+                            <svg class="h-5 w-5 text-[color:var(--fg)]" viewBox="0 0 24 24" fill="none"><path d="M12 3.5c3 0 5.5 2.4 5.5 5.4 0 2-1.1 3.8-2.8 4.8-.4.2-.7.7-.7 1.2V16a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1.1c0-.5-.3-1-.7-1.2C7.6 12.7 6.5 10.9 6.5 8.9 6.5 5.9 9 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 19h4M10.7 21h2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] shadow-lg hover:bg-[color:var(--card)]/90 transition" @click="mobileOpen = true">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-50 md:hidden" x-cloak>
+            <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" @click="mobileOpen = false"></div>
+            <div class="fixed top-0 left-0 bottom-0 w-full max-w-sm bg-[color:var(--bg)] border-l border-[color:var(--border)] shadow-2xl" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+                <div class="flex items-center justify-between p-4 border-b border-[color:var(--border)]">
+                    <span class="text-lg font-bold" x-text="SITE_CONFIG.brand.name"></span>
+                    <button @click="mobileOpen = false" class="p-2 rounded-lg hover:bg-[color:var(--card)]">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <nav class="p-4 space-y-2">
+                    <a href="services.html" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">الخدمات</a>
+                    <a href="index.html#products" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">المنتجات</a>
+                    <a href="portfolio.html" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">أعمالنا</a>
+                    <a href="index.html#brief" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">البرف</a>
+                    <a href="index.html#contact" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--card)] transition" @click="mobileOpen = false">تواصل</a>
+                </nav>
+            </div>
+        </div>
+    </header>

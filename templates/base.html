@@ -1,0 +1,77 @@
+<!doctype html>
+<!-- GENERATED FILE — do not edit. Edit templates/ then run: python build.py -->
+<html lang="ar" dir="rtl" class="dark scroll-smooth{% block html_classes %}{% endblock %}">
+
+<head>
+{% block head_splash_style %}{% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <title>{% block page_title %}Safi Group{% endblock %}</title>
+    <meta name="description" content="{% block page_description %}{% endblock %}" />
+    <meta name="theme-color" content="#080809" />
+
+    <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
+
+{% include "partials/head.html" %}
+
+    {% block tailwind_config %}
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { taj: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        'brand-red': '#E53935',
+                        'brand-red-light': '#EF5350',
+                        'brand-red-dark': '#C62828',
+                        'mint': '#81D8D0',
+                        'mint-dark': '#00C88C',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.30)',
+                        'glow-red': '0 0 20px rgba(229, 57, 53, 0.20)',
+                        'glow-mint': '0 0 20px rgba(129, 216, 208, 0.20)',
+                    }
+                }
+            }
+        }
+    </script>
+    {% endblock %}
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    {% block pre_app_scripts %}{% endblock %}
+    <script src="js/app.js"></script>
+    {% block post_app_scripts %}{% endblock %}
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body {% block body_attrs %}class="font-taj bg-[color:var(--bg)] text-[color:var(--fg)] selection:bg-brand-red/30 selection:text-white transition-colors duration-500"{% endblock %} x-data="fikraApp()" x-init="init()">
+
+{% block body_open %}{% endblock %}
+
+{% block header %}
+{% include "partials/header.html" %}
+{% endblock %}
+
+{% block main %}
+<main class="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-20">
+    {% block content %}{% endblock %}
+</main>
+{% endblock %}
+
+{% block wa_widget %}
+{% include "partials/wa-widget.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "partials/footer.html" %}
+{% endblock %}
+
+{% block body_close %}{% endblock %}
+</body>
+</html>

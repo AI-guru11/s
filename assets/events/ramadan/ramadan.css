@@ -1,0 +1,423 @@
+/* ===== Ramadan Splash Added ===== */
+
+/* ---------- Overlay Container ---------- */
+.ramadan-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  background: linear-gradient(175deg, #0b1220 0%, #060d18 45%, #020617 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ramadan-splash.is-visible {
+  opacity: 1;
+}
+
+.ramadan-splash.is-leaving {
+  opacity: 0;
+  transition-duration: 0.8s;
+}
+
+/* ---------- Skip Button ---------- */
+.ramadan-skip {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;  /* RTL: skip button on left (top-right in LTR) */
+  z-index: 10;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(245, 230, 163, 0.2);
+  border-radius: 9999px;
+  background: rgba(11, 18, 32, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(245, 230, 163, 0.6);
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  opacity: 0;
+  animation: ramadan-fadeIn 0.4s 1.2s ease forwards;
+  transition: color 0.25s, border-color 0.25s;
+}
+
+.ramadan-skip:hover {
+  color: rgba(245, 230, 163, 0.9);
+  border-color: rgba(245, 230, 163, 0.4);
+}
+
+/* ---------- Parallax Layers ---------- */
+.ramadan-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transition: transform 0.15s ease-out;
+}
+
+/* ---------- Starfield ---------- */
+.ramadan-stars {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+}
+
+.ramadan-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: ramadan-twinkle var(--dur, 3s) var(--delay, 0s) ease-in-out infinite;
+}
+
+.ramadan-star--large {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes ramadan-twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: var(--peak, 0.8); }
+}
+
+/* ---------- Dust Particles ---------- */
+.ramadan-dust {
+  position: absolute;
+  inset: 0;
+}
+
+.ramadan-dust-particle {
+  position: absolute;
+  width: var(--size, 3px);
+  height: var(--size, 3px);
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.5), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ramadan-dustDrift var(--dur, 8s) var(--delay, 0s) ease-in-out infinite;
+}
+
+@keyframes ramadan-dustDrift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  30% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx, 30px), var(--dy, -50px)) scale(1);
+  }
+}
+
+/* ---------- Moon ---------- */
+.ramadan-moon-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(120px, 22vmin, 200px);
+  height: clamp(120px, 22vmin, 200px);
+  transform: translate(-50%, -60%);
+}
+
+.ramadan-moon-halo {
+  position: absolute;
+  inset: -60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 230, 163, 0.12) 0%, rgba(212, 168, 67, 0.04) 40%, transparent 70%);
+  animation: ramadan-haloBreath 4s ease-in-out infinite;
+}
+
+@keyframes ramadan-haloBreath {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+.ramadan-moon-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(245, 230, 163, 0.3));
+  transform-style: preserve-3d;
+  animation: ramadan-moonFloat 6s ease-in-out infinite;
+  opacity: 0;
+  animation: ramadan-moonReveal 1.5s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             ramadan-moonFloat 6s 2.1s ease-in-out infinite;
+}
+
+@keyframes ramadan-moonReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotateZ(-8deg) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateZ(0deg) translateY(0);
+  }
+}
+
+@keyframes ramadan-moonFloat {
+  0%, 100% {
+    transform: rotateZ(0deg) rotateY(0deg) translateY(0);
+  }
+  33% {
+    transform: rotateZ(1.5deg) rotateY(3deg) translateY(-6px);
+  }
+  66% {
+    transform: rotateZ(-1deg) rotateY(-2deg) translateY(3px);
+  }
+}
+
+/* Shimmer sweep across moon */
+.ramadan-moon-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 70%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cmask id='m'%3E%3Crect width='200' height='200' fill='black'/%3E%3Ccircle cx='100' cy='100' r='60' fill='white'/%3E%3Ccircle cx='125' cy='90' r='50' fill='black'/%3E%3C/mask%3E%3Ccircle cx='100' cy='100' r='60' fill='white' mask='url(%23m)'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cmask id='m'%3E%3Crect width='200' height='200' fill='black'/%3E%3Ccircle cx='100' cy='100' r='60' fill='white'/%3E%3Ccircle cx='125' cy='90' r='50' fill='black'/%3E%3C/mask%3E%3Ccircle cx='100' cy='100' r='60' fill='white' mask='url(%23m)'/%3E%3C/svg%3E");
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: ramadan-shimmerSweep 5s 2s ease-in-out infinite;
+}
+
+@keyframes ramadan-shimmerSweep {
+  0%   { transform: translateX(-80%); }
+  100% { transform: translateX(80%); }
+}
+
+/* ---------- Lanterns ---------- */
+.ramadan-lanterns {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ramadan-lantern {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: ramadan-lanternDrop 1.2s var(--drop-delay, 0.8s) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: top center;
+}
+
+@keyframes ramadan-lanternDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rope */
+.ramadan-lantern-rope {
+  width: 1px;
+  height: var(--rope, 40px);
+  background: linear-gradient(to bottom, rgba(212, 168, 67, 0.1), rgba(212, 168, 67, 0.35));
+}
+
+/* Body */
+.ramadan-lantern-body {
+  position: relative;
+  width: var(--lw, 28px);
+  height: var(--lh, 44px);
+  animation: ramadan-lanternSwing var(--swing-dur, 4s) var(--swing-delay, 0s) ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes ramadan-lanternSwing {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(var(--swing-angle, 3deg)); }
+  75% { transform: rotate(calc(-1 * var(--swing-angle, 3deg))); }
+}
+
+/* Lantern shape — CSS-drawn */
+.ramadan-lantern-shape {
+  position: absolute;
+  inset: 0;
+  border-radius: 30% 30% 45% 45% / 20% 20% 50% 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(180, 130, 40, 0.9) 0%,
+    rgba(212, 168, 67, 0.85) 40%,
+    rgba(160, 110, 30, 0.9) 100%
+  );
+  box-shadow:
+    inset 0 0 12px 4px rgba(255, 220, 120, 0.4),
+    0 0 15px 3px rgba(212, 168, 67, 0.2);
+  overflow: hidden;
+}
+
+/* Inner golden glow */
+.ramadan-lantern-shape::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 60%;
+  height: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 230, 140, 0.7), transparent 70%);
+  animation: ramadan-lanternPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ramadan-lanternPulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Decorative cap */
+.ramadan-lantern-cap {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--lw, 28px) * 0.55);
+  height: 8px;
+  background: linear-gradient(180deg, #B8860B, #D4A843);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Decorative base */
+.ramadan-lantern-base {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--lw, 28px) * 0.35);
+  height: 6px;
+  background: #D4A843;
+  border-radius: 0 0 50% 50%;
+}
+
+/* ---------- Typography ---------- */
+.ramadan-text {
+  position: absolute;
+  bottom: clamp(18%, 22vh, 28%);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max(280px, 80vw);
+  max-width: 500px;
+}
+
+.ramadan-title {
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: #F5E6A3;
+  text-shadow:
+    0 0 30px rgba(212, 168, 67, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: ramadan-textUp 1s 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  line-height: 1.3;
+}
+
+.ramadan-subtitle {
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(0.8rem, 2.2vw, 1rem);
+  font-weight: 400;
+  color: rgba(245, 230, 163, 0.55);
+  letter-spacing: 0.04em;
+  margin-top: 0.75rem;
+  opacity: 0;
+  animation: ramadan-textUp 1s 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ramadan-textUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ramadan-fadeIn {
+  to { opacity: 1; }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ramadan-splash {
+    transition-duration: 0.3s;
+  }
+  .ramadan-splash.is-leaving {
+    transition-duration: 0.4s;
+  }
+  .ramadan-star,
+  .ramadan-dust-particle,
+  .ramadan-moon-shimmer,
+  .ramadan-lantern-shape::before {
+    animation: none !important;
+    opacity: 0.5;
+  }
+  .ramadan-moon-svg {
+    animation: ramadan-moonReveal 0.6s 0.3s ease forwards !important;
+  }
+  .ramadan-lantern {
+    animation-duration: 0.5s !important;
+  }
+  .ramadan-lantern-body {
+    animation: none !important;
+  }
+  .ramadan-moon-halo {
+    animation: none !important;
+  }
+  .ramadan-title {
+    animation-delay: 0.5s !important;
+    animation-duration: 0.5s !important;
+  }
+  .ramadan-subtitle {
+    animation-delay: 0.7s !important;
+    animation-duration: 0.5s !important;
+  }
+  .ramadan-skip {
+    animation-delay: 0.3s !important;
+  }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .ramadan-moon-wrap {
+    transform: translate(-50%, -65%);
+  }
+  .ramadan-text {
+    bottom: 20%;
+  }
+  .ramadan-lantern {
+    display: none; /* hide outer lanterns on very small screens to reduce clutter */
+  }
+  .ramadan-lantern:nth-child(1),
+  .ramadan-lantern:nth-child(2) {
+    display: flex; /* keep only 2 on small screens */
+  }
+}

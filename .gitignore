@@ -1,0 +1,17 @@
+# البيئة الافتراضية
+sssvenv/
+openrouterenv/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
+
+# ملفات الإعدادات والمفاتيح السرية
+.env
+js/airtable-config.js
+
+# ملفات بايثون المؤقتة
+__pycache__/
+*.py[cod]
+*$py.class

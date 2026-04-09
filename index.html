@@ -1,0 +1,1468 @@
+<!doctype html>
+<!-- GENERATED FILE — do not edit. Edit templates/ then run: python build.py -->
+<html lang="ar" dir="rtl" class="dark scroll-smooth is-splashing">
+
+<head>
+
+    <!-- Splash-first: hide main UI until splash takes over -->
+    <style>
+      html.is-splashing body > *:not(#event-splash) { visibility: hidden; }
+      html.is-splashing #event-splash { visibility: visible; }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Safi Group — تخيل.. نُنفذ</title>
+    <meta name="description" content="Safi Group — Creative hub with bento glass UI, briefing wizard, masonry work gallery, and Idea Light Mode." />
+    <meta name="theme-color" content="#080809" />
+
+    <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Important for dark: classes
+            theme: {
+                extend: {
+                    fontFamily: { taj: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        'brand-red': '#E53935',
+                        'brand-red-light': '#EF5350',
+                        'brand-red-dark': '#C62828',
+                        'mint': '#81D8D0',
+                        'mint-dark': '#00C88C',
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.30)',
+                        'glass-lg': '0 16px 48px 0 rgba(0, 0, 0, 0.35)',
+                        'glow-red': '0 0 24px rgba(229, 57, 53, 0.30)',
+                        'glow-red-lg': '0 0 48px rgba(229, 57, 53, 0.25)',
+                        'glow-mint': '0 0 24px rgba(129, 216, 208, 0.25)',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                        'glass': '16px',
+                        'glass-lg': '16px',
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    
+    <!-- ===== Event Splash Added ===== -->
+    <script src="assets/events/events.config.js"></script>
+
+    <!-- ملفات البيانات - يمكن تعديلها بسهولة -->
+    <script src="data/config.js"></script>
+    <script src="data/products.js"></script>
+    <script src="data/portfolio.js"></script>
+    <script src="data/partners.js"></script>
+    <script src="data/services.js"></script>
+    <script src="data/testimonials.js"></script>
+    <script src="data/faq.js"></script>
+
+    <!-- منطق التطبيق -->
+    <!-- Note: js/airtable-config.js is optional — add it here manually when configuring Airtable credentials -->
+    <script src="js/airtable-service.js"></script>
+
+    <script src="js/app.js"></script>
+    
+    <!-- nebula.js removed: replaced with CSS-only ambient glow for performance -->
+    <script src="js/floating-glyphs.js"></script>
+
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-taj text-[color:var(--fg)] selection:bg-brand-red/30 selection:text-white transition-colors duration-500"
+    style="background: var(--bg);" x-data="fikraApp()" x-init="init()">
+
+
+
+    <!-- ===== Event Splash Added ===== -->
+    <div id="event-splash" aria-hidden="true"></div>
+
+    <!-- Global Ambient Glow Background (CSS-only, replaces JS canvas for performance) -->
+    <div id="ambient-glow-bg" aria-hidden="true"></div>
+
+
+    <header class="site-header" :class="{'is-scrolled': headerShrink > 0.3}">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+            <div class="header-row flex items-center justify-between">
+                <a href="#top" class="group inline-flex items-center gap-3">
+                    <img src="assets/logo.webp" alt="Safi Group Logo" width="40" height="40" class="header-logo-img bg-white/5 ring-1 ring-white/10 group-hover:scale-105 transition-transform duration-300">
+                    <span class="header-brand-text leading-tight">
+                        <span class="block text-lg font-extrabold tracking-tight" x-text="SITE_CONFIG.brand.name"></span>
+                        <span class="block text-[11px] text-[color:var(--muted)] tracking-widest" x-text="SITE_CONFIG.brand.tagline"></span>
+                    </span>
+                </a>
+
+                <nav class="header-nav hidden md:flex items-center gap-8 text-sm font-medium text-[color:var(--muted)]">
+                    <a class="hover:text-[color:var(--fg)] transition" href="services.html">الخدمات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="#products">المنتجات</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="portfolio.html">أعمالنا</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="#brief">البرف</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="#contact">تواصل</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" class="group relative inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-sm ring-1 ring-[color:var(--border)] hover:ring-[color:var(--fg)]/20 transition bg-[color:var(--card)]" @click="toggleTheme()">
+                        <span class="relative grid h-6 w-6 place-items-center">
+                            <svg class="h-5 w-5 text-[color:var(--fg)]" viewBox="0 0 24 24" fill="none"><path d="M12 3.5c3 0 5.5 2.4 5.5 5.4 0 2-1.1 3.8-2.8 4.8-.4.2-.7.7-.7 1.2V16a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1.1c0-.5-.3-1-.7-1.2C7.6 12.7 6.5 10.9 6.5 8.9 6.5 5.9 9 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 19h4M10.7 21h2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        </span>
+                    </button>
+                    <button type="button" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] shadow-lg hover:bg-[color:var(--card)]/90 transition" @click="mobileOpen = true">
+                        <svg class="h-6 w-6 text-[color:var(--fg)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:hidden" x-show="mobileOpen" x-transition.opacity x-cloak @keydown.escape.window="mobileOpen=false">
+            <div class="fixed inset-0 z-50">
+                <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="mobileOpen=false"></div>
+                <div class="absolute inset-y-0 right-0 w-[85%] max-w-sm bg-[color:var(--bg)] border-l border-[color:var(--border)] shadow-2xl p-6">
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="font-extrabold text-xl" x-text="SITE_CONFIG.brand.name"></div>
+                        <button class="h-10 w-10 rounded-xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] flex items-center justify-center" @click="mobileOpen=false">✕</button>
+                    </div>
+                    <nav class="space-y-3 text-[color:var(--muted)]">
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="services.html">الخدمات</a>
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#products" @click="mobileOpen=false">المنتجات</a>
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="portfolio.html">أعمالنا</a>
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#brief" @click="mobileOpen=false">البرف</a>
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#contact" @click="mobileOpen=false">تواصل</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="top">
+        <section class="hero-fullscreen" id="hero-section">
+            <!-- Large Hero Logo — shrinks into header on scroll -->
+            <img src="assets/logo.webp" alt="Safi Group" width="180" height="180"
+                 class="hero-logo-large"
+                 :class="{'is-fading': headerShrink > 0.4}">
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <div class="space-y-8">
+                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
+                        <span class="block mb-3">
+                            <span class="hero-gradient-text">تخيل..</span>
+                        </span>
+                        <span class="block hero-implement-text">نُنفذ</span>
+                    </h1>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="portfolio.html" class="relative overflow-hidden rounded-2xl px-8 py-4 text-base font-bold text-white bg-gradient-to-l from-mint to-brand-red shadow-glow-neon hover:scale-[1.02] transition-transform">
+                            الأعمال
+                        </a>
+                        <a href="#products" class="noise relative overflow-hidden backdrop-blur-md rounded-2xl px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 hover:border-white/20 transition-all duration-300 shadow-lg">
+                            المنتجات
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="hero-scroll-hint" :class="{'is-hidden': headerShrink > 0.2}">
+                <div class="hero-scroll-hint-line"></div>
+                <span class="hero-scroll-hint-text">Scroll</span>
+            </div>
+        </section>
+
+        <!-- ====================================== -->
+        <!-- PARTNERS CAROUSEL - شركاء النجاح      -->
+        <!-- ====================================== -->
+    </main>
+
+    <!-- Full-Bleed Glass Partners Section -->
+    <section class="partners-glass-section noise backdrop-blur-md shadow-glass bg-[color:var(--card)]/40 border-y border-[color:var(--border)]" x-data="partnersCarousel()">
+        <div class="partners-glass-container">
+            <p class="text-xs font-bold text-[color:var(--muted)] tracking-[0.2em] uppercase mb-8 text-center opacity-70">شركاء النجاح في رحلتنا</p>
+
+            <div class="partners-glass-track" dir="ltr">
+                <div class="partners-glass-scroll">
+                    <!-- الشركاء - النسخة الأولى -->
+                    <template x-for="partner in partners" :key="partner.name">
+                        <div class="partner-capsule">
+                            <span class="partner-icon" x-text="partner.icon"></span>
+                            <span class="partner-name" x-text="partner.name"></span>
+                        </div>
+                    </template>
+                    <!-- الشركاء - النسخة الثانية للتمرير المستمر -->
+                    <template x-for="partner in partners" :key="'dup-' + partner.name">
+                        <div class="partner-capsule">
+                            <span class="partner-icon" x-text="partner.icon"></span>
+                            <span class="partner-name" x-text="partner.name"></span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="mx-auto max-w-7xl px-4 sm:px-6">
+
+        <section id="services" class="py-10 sm:py-20">
+            <div class="flex items-end justify-between gap-4 mb-8">
+                <div data-reveal>
+                    <span class="section-label">SERVICES — الخدمات</span>
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight">خدماتنا</h2>
+                    <p class="mt-2 text-[color:var(--muted)]">لماذا الصافي؟</p>
+                </div>
+                <a href="#brief" class="hidden sm:inline-flex rounded-2xl px-5 py-3 text-sm font-bold bg-[color:var(--card)] ring-1 ring-[color:var(--border)] hover:bg-[color:var(--fg)]/5 transition" data-reveal>
+                    جهّز البرف
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+                <article class="noise lg:col-span-8 backdrop-blur-md shadow-glass p-8" data-reveal>
+                    <div class="flex flex-col sm:flex-row items-start justify-between gap-8">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-black tracking-tight">Why Safi - لماذا الصافي</h3>
+                            <p class="mt-2 text-[color:var(--muted)]">ثلاث نقاط تجعلك تختار مجموعة الصافي.</p>
+                            <ul class="mt-8 space-y-4 text-sm font-medium">
+                                <li class="flex gap-4">
+                                    <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-red shadow-glow-red flex-shrink-0"></span>
+                                    <span><span class="font-extrabold text-[color:var(--fg)]">Speed/الكفاءة والسرعة:</span> نعمل بوضوح وكفاءة: ننتقل بك من الفكرة إلى النموذج، ثم التسليم.</span>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="mt-1 h-2.5 w-2.5 rounded-full bg-brand-red shadow-glow-red flex-shrink-0"></span>
+                                    <span><span class="font-extrabold text-[color:var(--fg)]">Craft - دقة التنفيذ:</span> يكمن السر في التفاصيل: نعتني بضبط العناصر وأدق التفاصيل.</span>
+                                </li>
+                                <li class="flex gap-4">
+                                    <span class="mt-1 h-2.5 w-2.5 rounded-full bg-gray-400 flex-shrink-0"></span>
+                                    <span><span class="font-extrabold text-[color:var(--fg)]">Results/النتائج: </span>نصمم لتحقيق الأهداف.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="w-full sm:w-[45%] rounded-3xl bg-gradient-to-l from-brand-red/10 via-brand-red/5 to-transparent ring-1 ring-[color:var(--border)] p-6 self-stretch flex flex-col justify-between">
+                            <div>
+                                <div class="text-xs font-bold text-[color:var(--muted)] uppercase tracking-wider mb-2">تواصل معنا</div>
+                                <div class="text-sm text-[color:var(--fg)] leading-relaxed opacity-90">
+                                    مجرد ضغطة زر واحدة تفصلك عن الارتقاء بمنتجك.
+                                </div>
+                            </div>
+                            <div class="mt-6 grid grid-cols-2 gap-3 text-xs text-[color:var(--muted)]">
+                                <div class="rounded-xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] p-3">
+                                    <div class="font-extrabold text-[color:var(--fg)]">WhatsApp</div>
+                                    <div class="mt-1" dir="ltr" x-text="SITE_CONFIG.whatsapp"></div>
+                                </div>
+                                <div class="rounded-xl bg-[color:var(--card)] ring-1 ring-[color:var(--border)] p-3">
+                                    <div class="font-extrabold text-[color:var(--fg)]">Location</div>
+                                    <div class="mt-1">Muhayel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="noise lg:col-span-4 rounded-[2rem] backdrop-blur-md shadow-glass p-8 flex flex-col justify-center text-center" data-reveal>
+                    <h3 class="text-2xl font-black">جاهز نبدأ؟</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">جرب "مستكشف الذوق" الخاص بنا.</p>
+                    <a href="#brief" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-4 py-4 text-base font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.02]">
+                        جربه الآن
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section id="products" class="py-10 sm:py-20" x-data="productsShop()" x-init="init()">
+            <!-- Header -->
+            <div class="mb-12" data-reveal>
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+                    <div>
+                        <span class="section-label">PRODUCTS — المنتجات</span>
+                        <h2 class="text-3xl sm:text-5xl font-black tracking-tight">متجر <span class="text-brand-red">المنتجات</span></h2>
+                        <p class="mt-2 text-[color:var(--muted)]">تصفح أحدث عروضنا ومنتجاتنا المميزة — <span x-text="products.length"></span> منتج متنوع</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div x-show="isLoading" x-transition class="space-y-8 mb-8">
+                <div class="skeleton-category-row">
+                    <div class="skeleton-header">
+                        <div class="skeleton-title"></div>
+                    </div>
+                    <div class="skeleton-slider">
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                    </div>
+                </div>
+                <div class="skeleton-category-row">
+                    <div class="skeleton-header">
+                        <div class="skeleton-title"></div>
+                    </div>
+                    <div class="skeleton-slider">
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                        <div class="skeleton-card"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div x-show="loadingError && !isLoading" x-transition class="error-message noise mb-8">
+                <svg class="w-8 h-8 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                <div>
+                    <h3 class="text-lg font-bold text-brand-red mb-1">فشل تحميل البيانات من Airtable</h3>
+                    <p class="text-sm text-[color:var(--muted)]">تم التحويل إلى البيانات المحلية تلقائياً</p>
+                </div>
+            </div>
+
+            <!-- Category-Based Horizontal Sliders -->
+            <div x-show="activeCategory === 'all' && !isLoading" x-transition class="max-w-7xl mx-auto px-4 sm:px-6">
+                <template x-for="cat in categoriesWithProducts" :key="cat.id">
+                    <div class="category-row" data-reveal>
+                        <!-- Category Header -->
+                        <div class="category-row-header">
+                            <div class="category-row-title">
+                                <h3>
+                                    <span class="category-row-icon" x-text="cat.icon"></span>
+                                    <span x-text="cat.name"></span>
+                                    <span class="category-row-count" x-text="getProductsByCategory(cat.id).length"></span>
+                                </h3>
+                            </div>
+                            <button class="category-view-all" @click="viewAllCategory(cat.id)">
+                                <span>عرض الكل</span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Horizontal Slider -->
+                        <div class="slider-container">
+                            <!-- Right Arrow (for RTL) -->
+                            <button class="slider-arrow slider-arrow-right" @click="scrollSlider(cat.id, 1)" aria-label="السابق">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+
+                            <!-- Slider with Products -->
+                            <div class="horizontal-slider" :id="'slider-' + cat.id">
+                                <template x-for="product in getProductsByCategory(cat.id)" :key="product.id">
+                    <article class="product-card">
+                        <!-- Product Image -->
+                        <div class="product-card-image">
+                            <!-- Badge -->
+                            <template x-if="product.tag === 'new'">
+                                <span class="product-badge product-badge-new">جديد</span>
+                            </template>
+                            <template x-if="product.tag === 'best'">
+                                <span class="product-badge product-badge-best">الأكثر طلباً</span>
+                            </template>
+
+                            <!-- Category Label -->
+                            <span class="product-category-label" x-text="product.categoryName"></span>
+
+                            <!-- Image or Icon -->
+                            <template x-if="product.image">
+                                <img :data-src="imagesPath + product.image"
+                                     :alt="product.name"
+                                     class="lazy-image"
+                                     loading="lazy">
+                            </template>
+                            <template x-if="!product.image">
+                                <div class="product-card-icon">
+                                    <span x-text="product.icon"></span>
+                                </div>
+                            </template>
+
+                            <!-- Quick View Button -->
+                            <button class="product-quick-view" @click="openProductModal(product)">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+
+                            <!-- Out of Stock -->
+                            <template x-if="!product.inStock">
+                                <div class="product-out-of-stock">
+                                    <span>نفذت الكمية</span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Product Content -->
+                        <div class="product-card-content">
+                            <h4 class="product-card-title" x-text="product.name"></h4>
+                            <p class="product-card-desc" x-text="product.description"></p>
+
+                            <!-- Rating -->
+                            <div class="product-rating">
+                                <div class="product-rating-stars">
+                                    <template x-for="i in getStars(product.rating).full">
+                                        <svg class="product-rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </template>
+                                    <template x-for="i in getStars(product.rating).empty">
+                                        <svg class="product-rating-star empty" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                    </template>
+                                </div>
+                                <span class="product-rating-value" x-text="product.rating"></span>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="product-price-container">
+                                <span class="product-price" x-text="product.price + ' ر.س'"></span>
+                                <template x-if="product.originalPrice && product.originalPrice > product.price">
+                                    <span class="product-price-original" x-text="product.originalPrice + ' ر.س'"></span>
+                                </template>
+                                <template x-if="getDiscount(product) > 0">
+                                    <span class="product-discount" x-text="'-' + getDiscount(product) + '%'"></span>
+                                </template>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="product-actions">
+                                <button class="product-action-btn product-action-btn-primary"
+                                    :class="{ 'in-cart': isInCart(product.id) }"
+                                    @click="addToCart(product)"
+                                    :disabled="!product.inStock">
+                                    <template x-if="!isInCart(product.id)">
+                                        <span>إضافة للسلة</span>
+                                    </template>
+                                    <template x-if="isInCart(product.id)">
+                                        <span>✓ في السلة</span>
+                                    </template>
+                                </button>
+                                <button class="product-action-btn product-action-btn-secondary"
+                                    @click="openProductModal(product)">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+                            </div>
+
+                            <!-- Left Arrow (for RTL) -->
+                            <button class="slider-arrow slider-arrow-left" @click="scrollSlider(cat.id, -1)" aria-label="التالي">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Single Category Grid View (When "View All" is clicked) -->
+            <div x-show="activeCategory !== 'all' && !isLoading" x-transition>
+                <!-- Back Button -->
+                <div class="mb-6">
+                    <button class="inline-flex items-center gap-2 px-4 py-2 bg-[color:var(--card)] border border-[color:var(--border)] rounded-2xl text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:border-[color:var(--fg)] transition" @click="activeCategory = 'all'">
+                        <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="font-bold">العودة لجميع الفئات</span>
+                    </button>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid max-w-7xl mx-auto px-4 sm:px-6" data-reveal>
+                    <template x-for="product in filteredProducts" :key="product.id">
+                        <article class="product-card">
+                            <!-- Product Image -->
+                            <div class="product-card-image">
+                                <!-- Badge -->
+                                <template x-if="product.tag === 'new'">
+                                    <span class="product-badge product-badge-new">جديد</span>
+                                </template>
+                                <template x-if="product.tag === 'best'">
+                                    <span class="product-badge product-badge-best">الأكثر طلباً</span>
+                                </template>
+
+                                <!-- Category Label -->
+                                <span class="product-category-label" x-text="product.categoryName"></span>
+
+                                <!-- Image or Icon -->
+                                <template x-if="product.image">
+                                    <img :data-src="imagesPath + product.image"
+                                         :alt="product.name"
+                                         class="lazy-image"
+                                         loading="lazy">
+                                </template>
+                                <template x-if="!product.image">
+                                    <div class="product-card-icon">
+                                        <span x-text="product.icon"></span>
+                                    </div>
+                                </template>
+
+                                <!-- Quick View Button -->
+                                <button class="product-quick-view" @click="openProductModal(product)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Out of Stock -->
+                                <template x-if="!product.inStock">
+                                    <div class="product-out-of-stock">
+                                        <span>نفذت الكمية</span>
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Product Content -->
+                            <div class="product-card-content">
+                                <h4 class="product-card-title" x-text="product.name"></h4>
+                                <p class="product-card-desc" x-text="product.description"></p>
+
+                                <!-- Rating -->
+                                <div class="product-rating">
+                                    <div class="product-rating-stars">
+                                        <template x-for="i in getStars(product.rating).full">
+                                            <svg class="product-rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        </template>
+                                        <template x-for="i in getStars(product.rating).empty">
+                                            <svg class="product-rating-star empty" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        </template>
+                                    </div>
+                                    <span class="product-rating-value" x-text="product.rating"></span>
+                                </div>
+
+                                <!-- Price -->
+                                <div class="product-price-container">
+                                    <span class="product-price" x-text="product.price + ' ر.س'"></span>
+                                    <template x-if="product.originalPrice && product.originalPrice > product.price">
+                                        <span class="product-price-original" x-text="product.originalPrice + ' ر.س'"></span>
+                                    </template>
+                                    <template x-if="getDiscount(product) > 0">
+                                        <span class="product-discount" x-text="'-' + getDiscount(product) + '%'"></span>
+                                    </template>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="product-actions">
+                                    <button class="product-action-btn product-action-btn-primary"
+                                        :class="{ 'in-cart': isInCart(product.id) }"
+                                        @click="addToCart(product)"
+                                        :disabled="!product.inStock">
+                                        <template x-if="!isInCart(product.id)">
+                                            <span>إضافة للسلة</span>
+                                        </template>
+                                        <template x-if="isInCart(product.id)">
+                                            <span>✓ في السلة</span>
+                                        </template>
+                                    </button>
+                                    <button class="product-action-btn product-action-btn-secondary"
+                                        @click="openProductModal(product)">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Product Modal -->
+            <div class="product-modal-overlay"
+                 x-show="modalOpen"
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 @click.self="closeProductModal()"
+                 @keydown.escape.window="closeProductModal()"
+                 x-cloak>
+                <div class="product-modal"
+                     x-show="modalOpen"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+                     x-transition:enter-end="opacity-100 scale-100 translate-y-0">
+
+                    <button class="product-modal-close" @click="closeProductModal()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+
+                    <template x-if="selectedProduct">
+                        <div>
+                            <!-- Modal Image -->
+                            <div class="product-modal-image">
+                                <template x-if="selectedProduct.image">
+                                    <img :src="imagesPath + selectedProduct.image" :alt="selectedProduct.name" class="w-full h-full object-cover">
+                                </template>
+                                <template x-if="!selectedProduct.image">
+                                    <span x-text="selectedProduct.icon"></span>
+                                </template>
+                            </div>
+
+                            <!-- Modal Content -->
+                            <div class="product-modal-content">
+                                <span class="product-modal-category" x-text="selectedProduct.categoryName"></span>
+                                <h3 class="product-modal-title" x-text="selectedProduct.name"></h3>
+                                <p class="product-modal-desc" x-text="selectedProduct.description"></p>
+
+                                <!-- Features -->
+                                <div class="product-modal-features">
+                                    <template x-for="feature in selectedProduct.features" :key="feature">
+                                        <div class="product-modal-feature">
+                                            <svg class="w-4 h-4 product-modal-feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                            <span x-text="feature"></span>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Price & Actions -->
+                                <div class="product-modal-price-section">
+                                    <div>
+                                        <span class="product-modal-price" x-text="selectedProduct.price + ' ر.س'"></span>
+                                        <template x-if="selectedProduct.originalPrice && selectedProduct.originalPrice > selectedProduct.price">
+                                            <span class="product-price-original mr-2" x-text="selectedProduct.originalPrice + ' ر.س'"></span>
+                                        </template>
+                                    </div>
+                                    <div class="product-modal-actions">
+                                        <button class="product-modal-btn product-modal-btn-primary"
+                                            @click="addToCart(selectedProduct); closeProductModal()">
+                                            إضافة للسلة
+                                        </button>
+                                        <button class="product-modal-btn product-modal-btn-whatsapp neon-pulse"
+                                            @click="orderProduct(selectedProduct)">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                            </svg>
+                                            طلب مباشر
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Floating Cart Button -->
+            <div class="cart-floating" x-show="cart.length > 0" x-transition.scale x-cloak>
+                <button class="cart-floating-btn neon-pulse" @click="checkout()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span>إتمام الطلب</span>
+                    <span class="cart-count" x-text="cart.length"></span>
+                    <span class="text-sm opacity-80" x-text="cartTotal + ' ر.س'"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- خدماتنا (Our Services Section)               -->
+        <!-- ============================================ -->
+        <section id="services" class="py-10 sm:py-20" x-data="{
+            get services() {
+                return window.SERVICES_DATA?.mainServices || [];
+            }
+        }">
+            <!-- Header -->
+            <div class="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4" data-reveal>
+                <div>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+                        <span class="text-brand-red">خدماتنا</span>
+                    </h2>
+                    <p class="mt-2 text-[color:var(--muted)]">حلول إبداعية متكاملة تلبي جميع احتياجاتك التسويقية والإعلانية</p>
+                </div>
+                <a href="services.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[color:var(--card)] border border-[color:var(--border)] text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:border-[color:var(--fg)] font-bold transition">
+                    <span>عرض جميع الخدمات</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-reveal>
+                <template x-for="service in services" :key="service.id">
+                    <article class="noise backdrop-blur-md shadow-glass p-6 sm:p-8 hover:scale-[1.02] transition-all duration-300">
+                        <!-- Service Header -->
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-5xl" x-text="service.icon"></div>
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-black text-[color:var(--fg)]" x-text="service.title"></h3>
+                                <p class="text-xs text-[color:var(--muted)] uppercase tracking-wide" x-text="service.titleEn"></p>
+                            </div>
+                        </div>
+
+                        <!-- Service Description -->
+                        <p class="text-sm text-[color:var(--muted)] mb-6" x-text="service.description"></p>
+
+                        <!-- Service Items Grid -->
+                        <div class="grid gap-2">
+                            <template x-for="item in service.services" :key="item.name">
+                                <div class="flex items-start gap-3 p-3 rounded-xl bg-[color:var(--card)] border border-[color:var(--border)] hover:border-[color:var(--fg)] transition-colors">
+                                    <span class="text-2xl flex-shrink-0" x-text="item.icon"></span>
+                                    <div class="min-w-0">
+                                        <div class="text-sm font-bold text-[color:var(--fg)] line-clamp-1" x-text="item.name"></div>
+                                        <div class="text-xs text-[color:var(--muted)] line-clamp-1" x-text="item.desc"></div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <a href="#brief" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.05]">
+                            <span>ابدأ مشروعك</span>
+                            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </a>
+                    </article>
+                </template>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- أعمالنا (Our Works Section)                  -->
+        <!-- ============================================ -->
+        <section id="our-works" class="py-10 sm:py-20" x-data="{
+            activeCategory: 'all',
+
+            get categories() {
+                const cats = window.PORTFOLIO_DATA?.workCategories || [];
+                return cats.map(cat => ({
+                    ...cat,
+                    count: this.getWorksByCategory(cat.id).length
+                }));
+            },
+
+            get works() {
+                return window.PORTFOLIO_DATA?.ourWorks || [];
+            },
+
+            get categoriesWithWorks() {
+                return this.categories.filter(cat => cat.count > 0);
+            },
+
+            getWorksByCategory(categoryId) {
+                return this.works.filter(w => w.category === categoryId);
+            },
+
+            scrollSlider(categoryId, direction) {
+                const slider = document.getElementById('works-slider-' + categoryId);
+                if (!slider) return;
+                const scrollAmount = slider.offsetWidth * 0.8;
+                slider.scrollBy({
+                    left: direction * scrollAmount * -1,
+                    behavior: 'smooth'
+                });
+            },
+
+            viewAllCategory(categoryId) {
+                this.activeCategory = categoryId;
+                const section = document.getElementById('our-works');
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }">
+            <!-- Header -->
+            <div class="mb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4" data-reveal>
+                <div>
+                    <span class="section-label">OUR WORKS — أعمالنا</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight">
+                        <span class="text-brand-red">أعمالنا</span>
+                    </h2>
+                    <p class="mt-2 text-[color:var(--muted)]">مشاريع منجزة بنجاح تعكس خبرتنا وإبداعنا — <span x-text="works.length"></span> مشروع</p>
+                </div>
+                <a href="portfolio.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[color:var(--card)] border border-[color:var(--border)] text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:border-[color:var(--border)] font-bold transition">
+                    <span>عرض جميع الأعمال</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Category-Based Horizontal Sliders -->
+            <div x-show="activeCategory === 'all'">
+                <template x-for="cat in categoriesWithWorks" :key="cat.id">
+                    <div class="category-row" data-reveal>
+                        <!-- Category Header -->
+                        <div class="category-row-header">
+                            <div class="category-row-title">
+                                <h3>
+                                    <span class="category-row-icon" x-text="cat.icon"></span>
+                                    <span x-text="cat.name"></span>
+                                    <span class="category-row-count" x-text="cat.count"></span>
+                                </h3>
+                            </div>
+                            <button class="category-view-all" @click="viewAllCategory(cat.id)">
+                                <span>عرض الكل</span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Horizontal Slider -->
+                        <div class="slider-container">
+                            <!-- Right Arrow (for RTL) -->
+                            <button class="slider-arrow slider-arrow-right" @click="scrollSlider(cat.id, 1)" aria-label="السابق">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+
+                            <!-- Slider with Works -->
+                            <div class="horizontal-slider" :id="'works-slider-' + cat.id">
+                                <template x-for="work in getWorksByCategory(cat.id)" :key="work.id">
+                                    <article class="noise backdrop-blur-md shadow-glass overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                                        <!-- Work Image/Gradient -->
+                                        <div class="relative h-48 flex items-center justify-center" :style="'background: ' + work.gradient">
+                                            <span class="text-6xl" x-text="work.icon"></span>
+                                            <!-- Tags -->
+                                            <div class="absolute bottom-3 left-3 right-3 flex gap-2 flex-wrap">
+                                                <template x-for="tag in work.tags" :key="tag">
+                                                    <span class="px-2 py-1 rounded-full text-xs font-bold bg-black/50 backdrop-blur-sm text-white border border-white/20" x-text="tag"></span>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <!-- Work Content -->
+                                        <div class="p-5">
+                                            <h4 class="text-lg font-black text-[color:var(--fg)] mb-2 line-clamp-1" x-text="work.title"></h4>
+                                            <p class="text-sm text-[color:var(--muted)] line-clamp-2" x-text="work.description"></p>
+                                        </div>
+                                    </article>
+                                </template>
+                            </div>
+
+                            <!-- Left Arrow (for RTL) -->
+                            <button class="slider-arrow slider-arrow-left" @click="scrollSlider(cat.id, -1)" aria-label="التالي">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Single Category Grid View (When "View All" is clicked) -->
+            <div x-show="activeCategory !== 'all'" x-transition>
+                <!-- Back Button -->
+                <div class="mb-6">
+                    <button class="inline-flex items-center gap-2 px-4 py-2 bg-[color:var(--card)] border border-[color:var(--border)] rounded-2xl text-[color:var(--muted)] hover:text-[color:var(--fg)] hover:border-[color:var(--fg)] transition" @click="activeCategory = 'all'">
+                        <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="font-bold">العودة لجميع الفئات</span>
+                    </button>
+                </div>
+
+                <!-- Works Grid -->
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-reveal>
+                    <template x-for="work in works.filter(w => activeCategory === 'all' || w.category === activeCategory)" :key="work.id">
+                        <article class="noise backdrop-blur-md shadow-glass overflow-hidden hover:scale-[1.02] transition-all duration-300">
+                            <!-- Work Image/Gradient -->
+                            <div class="relative h-48 flex items-center justify-center" :style="'background: ' + work.gradient">
+                                <span class="text-6xl" x-text="work.icon"></span>
+                                <!-- Tags -->
+                                <div class="absolute bottom-3 left-3 right-3 flex gap-2 flex-wrap">
+                                    <template x-for="tag in work.tags" :key="tag">
+                                        <span class="px-2 py-1 rounded-full text-xs font-bold bg-black/50 backdrop-blur-sm text-white border border-white/20" x-text="tag"></span>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <!-- Work Content -->
+                            <div class="p-5">
+                                <h4 class="text-lg font-black text-[color:var(--fg)] mb-2 line-clamp-1" x-text="work.title"></h4>
+                                <p class="text-sm text-[color:var(--muted)] line-clamp-2" x-text="work.description"></p>
+                            </div>
+                        </article>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <section id="transformations" class="py-10 sm:py-20" x-data="transformationsData()">
+            <div class="mb-10 px-4 sm:px-6 mx-auto max-w-7xl" data-reveal>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">لمسة <span class="text-brand-red">الصافي</span></h2>
+                <p class="mt-2 text-[color:var(--muted)]">لا نتحدث عن الجودة فقط، بل نجعلك تراها.</p>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    
+                    <div data-reveal>
+                        <div class="inline-block px-3 py-1 rounded-full bg-[color:var(--fg)]/5 border border-[color:var(--border)] text-xs font-bold text-brand-red mb-4">
+                            دراسة حالة: Rebranding
+                        </div>
+                        <h3 class="text-2xl sm:text-4xl font-black leading-tight mb-4" x-text="title"></h3>
+                        <p class="text-[color:var(--muted)] leading-relaxed mb-8 text-lg" x-text="desc"></p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <template x-for="stat in stats">
+                                <div class="p-4 rounded-2xl bg-[color:var(--card)] border border-[color:var(--border)]">
+                                    <div class="text-3xl font-black text-[color:var(--fg)]" x-text="stat.value"></div>
+                                    <div class="text-sm text-[color:var(--muted)]" x-text="stat.label"></div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <a href="#brief" class="inline-flex items-center gap-2 text-brand-red font-bold hover:gap-4 transition-all">
+                            ابدأ رحلة التغيير لعلامتك
+                            <svg class="w-5 h-5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+                    <div class="relative w-full aspect-[4/3] sm:aspect-video rounded-[2rem] overflow-hidden border-4 border-[color:var(--border)] shadow-2xl select-none" 
+                         x-data="beforeAfter()" 
+                         @mousedown="start($event)" @touchstart="start($event)"
+                         @mousemove.window="move($event)" @touchmove.window="move($event)"
+                         @mouseup.window="end()" @touchend.window="end()"
+                         data-reveal>
+                        
+                        <div class="absolute inset-0 w-full h-full">
+                            <div class="w-full h-full bg-gradient-to-br from-brand-red via-brand-red-dark to-slate-900 flex items-center justify-center">
+                                <div class="text-center">
+                                    <h4 class="text-4xl font-black text-white drop-shadow-lg tracking-wider">AFTER</h4>
+                                    <p class="text-white/80 font-bold mt-2">تصميم عصري وجذاب</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 w-full h-full overflow-hidden" :style="`width: ${pos}%`">
+                            <div class="absolute inset-0 w-full h-full border-r-4 border-white/50">
+                                <div class="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800 grayscale flex items-center justify-center" style="width: 100vw; max-width: 100%;">
+                                    <div class="text-center opacity-60">
+                                        <h4 class="text-4xl font-black text-white tracking-wider">BEFORE</h4>
+                                        <p class="text-white/80 font-bold mt-2">التصميم القديم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-lg pointer-events-none z-10">بعد التنفيذ ✨</div>
+                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-gray-300 text-xs font-bold px-3 py-1 rounded-lg pointer-events-none z-10">قبل 🏚️</div>
+
+                        <div class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-[0_0_20px_rgba(0,0,0,0.5)] z-20" :style="`left: ${pos}%`">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-red">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="brief" class="py-10 sm:py-20" x-data="briefWizard()">
+            <div class="noise p-6 sm:p-10 relative overflow-hidden" data-reveal>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[color:var(--fg)]/10 to-transparent"></div>
+
+                <div class="flex justify-between items-center mb-10 relative z-10">
+                    <div>
+                        <span class="section-label">BRIEF WIZARD — مستكشف الذوق</span>
+                        <h2 class="text-2xl sm:text-4xl font-black tracking-tight">مستكشف الذوق</h2>
+                        <p class="mt-2 text-[color:var(--muted)]">صمم تجربتك.. اختر ما يمثل رؤيتك.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-bold text-[color:var(--muted)]">خطوة <span x-text="step" class="text-[color:var(--fg)]"></span>/3</span>
+                        <div class="w-20 h-1.5 bg-[color:var(--fg)]/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-brand-red transition-all duration-500" :style="`width: ${(step/3)*100}%`"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div x-show="step===1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 rounded-full bg-brand-red"></span>
+                        ما هو نوع المشروع الذي تفكر فيه؟
+                    </h3>
+                    <div class="grid gap-5 sm:grid-cols-3">
+                        <button @click="setCategory('decor')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
+                            <div class="absolute inset-0 bg-gradient-to-br from-[#2c2c2c] via-[#1a1a1a] to-black transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <div class="absolute -left-4 -bottom-4 text-9xl opacity-5 grayscale group-hover:opacity-10 transition-opacity duration-500 select-none">🏗️</div>
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">🏠</div>
+                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-brand-red transition-colors">ديكور وتصميم</h3>
+                                <p class="text-sm text-gray-400 font-medium leading-relaxed">تصميم داخلي، واجهات، مساحات تجارية.</p>
+                            </div>
+                        </button>
+
+                        <button @click="setCategory('branding')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
+                            <div class="absolute inset-0 bg-gradient-to-bl from-emerald-900 via-teal-900 to-slate-900 transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(0,229,160,0.25),_transparent_60%)]"></div>
+                            <div class="absolute -left-6 -top-6 text-9xl opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-700 select-none">🎨</div>
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">✨</div>
+                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-brand-red transition-colors">هوية بصرية</h3>
+                                <p class="text-sm text-gray-300 font-medium leading-relaxed">شعارات، هوية شركات، مطبوعات.</p>
+                            </div>
+                        </button>
+
+                        <button @click="setCategory('events')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
+                            <div class="absolute inset-0 bg-gradient-to-br from-rose-900 via-red-950 to-black transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_transparent_0deg,_rgba(255,200,0,0.1)_50deg,_transparent_100deg)] opacity-30"></div>
+                            <div class="absolute -right-6 -top-6 text-9xl opacity-5 group-hover:opacity-10 transition-opacity duration-500 select-none">🎉</div>
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
+                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">🎪</div>
+                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-yellow-400 transition-colors">تنظيم فعاليات</h3>
+                                <p class="text-sm text-gray-300 font-medium leading-relaxed">مؤتمرات، معارض، حفلات، مسارح.</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div x-show="step===2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 rounded-full bg-brand-red"></span>
+                        أي نمط يميل إليه ذوقك أكثر؟
+                    </h3>
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <button @click="setStyle('modern')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">☁️</span>
+                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-brand-red group-hover:bg-brand-red transition-colors"></div>
+                            </div>
+                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-brand-red transition-colors">مودرن / بسيط</div>
+                            <div class="text-sm text-[color:var(--muted)] mt-2">خطوط نظيفة، مساحات بيضاء.</div>
+                        </button>
+
+                        <button @click="setStyle('classic')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">🏛️</span>
+                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-yellow-500 group-hover:bg-yellow-500 transition-colors"></div>
+                            </div>
+                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-yellow-500 transition-colors">كلاسيكي / فخم</div>
+                            <div class="text-sm text-[color:var(--muted)] mt-2">تفاصيل غنية، زخارف، ألوان دافئة.</div>
+                        </button>
+
+                        <button @click="setStyle('neon')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">⚡</span>
+                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-brand-red group-hover:bg-brand-red transition-colors"></div>
+                            </div>
+                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-brand-red transition-colors">نيون / جريء</div>
+                            <div class="text-sm text-[color:var(--muted)] mt-2">إضاءة عالية، طابع شبابي.</div>
+                        </button>
+                    </div>
+                    <button @click="step=1" class="mt-8 flex items-center gap-2 text-sm font-bold text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors">
+                        <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        رجوع للخطوة السابقة
+                    </button>
+                </div>
+
+                <div x-show="step===3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
+                    <div class="text-center mb-8">
+                        <div class="inline-block p-3 rounded-full bg-green-500/20 text-green-400 text-3xl mb-4">✨</div>
+                        <h3 class="text-2xl font-black text-[color:var(--fg)]">وجدنا ما يناسب ذوقك!</h3>
+                        <p class="text-sm text-[color:var(--muted)] mt-2">بناءً على اختيارك: <span class="font-bold text-[color:var(--fg)] px-2 py-1 rounded bg-[color:var(--fg)]/10" x-text="preferences.style"></span></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                        <template x-for="project in matches" :key="project.id">
+                            <div class="group relative rounded-[2rem] overflow-hidden aspect-video border border-white/10 shadow-2xl">
+                                <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110" :style="`background: ${project.img}`"></div>
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                                    <div class="font-bold text-lg text-white mb-1" x-text="project.title"></div>
+                                    <div class="text-sm text-gray-300 line-clamp-1" x-text="project.desc"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-[color:var(--fg)]/5 to-[color:var(--fg)]/10 rounded-[2rem] p-6 border border-[color:var(--border)] text-center">
+                        <h4 class="font-bold text-lg mb-6 text-[color:var(--fg)]">لنحول هذه الرؤية إلى واقع 🔻</h4>
+                        <div class="grid gap-3 sm:grid-cols-2 mb-4">
+                            <input x-model="contact.name" type="text" placeholder="الاسم الكريم" class="w-full p-4 rounded-xl bg-[color:var(--bg)] border border-[color:var(--border)] outline-none focus:border-brand-red focus:bg-[color:var(--card)] transition text-[color:var(--fg)] placeholder-[color:var(--muted)]">
+                            <input x-model="contact.phone" type="tel" placeholder="رقم الجوال" class="w-full p-4 rounded-xl bg-[color:var(--bg)] border border-[color:var(--border)] outline-none focus:border-brand-red focus:bg-[color:var(--card)] transition text-[color:var(--fg)] placeholder-[color:var(--muted)]">
+                        </div>
+                        <button @click="sendRequest()" class="w-full py-4 rounded-xl bg-gradient-to-l from-mint to-brand-red text-white font-bold text-lg shadow-glow-red hover:scale-[1.01] transition-transform flex items-center justify-center gap-2">
+                            <span>•</span> أرسل طلب استشارة مجانية
+                        </button>
+                    </div>
+                    
+                    <button @click="reset()" class="mt-6 w-full text-center text-sm font-medium text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors">بدء من جديد ↻</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="py-10 sm:py-20">
+             <div data-reveal class="mb-8">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight">معرض الأعمال</h2>
+                <p class="mt-2 text-[color:var(--muted)]">أعمالنا تتحدث عن نفسها.</p>
+            </div>
+
+            <div x-data="workGallery()" class="masonry">
+                 <div class="masonry-item">
+                    <article class="noise border border-[color:var(--border)] bg-[color:var(--card)] overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="font-bold text-lg">Before / After</h3>
+                             <div class="relative h-64 mt-4 rounded-2xl overflow-hidden ring-1 ring-white/10" x-data="beforeAfter()" @pointerdown="start($event)" @pointermove.window="move($event)" @pointerup.window="end()" @pointercancel.window="end()">
+                                <div class="absolute inset-0 bg-gray-700 flex items-center justify-center">Old Brand</div>
+                                <div class="absolute inset-0 bg-brand-red flex items-center justify-center text-black font-bold" :style="`clip-path: inset(0 0 0 ${pos}%)`">New Brand</div>
+                                <div class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize" :style="`left: ${pos}%`">
+                                    <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-black text-xs font-bold">•</div>
+                                </div>
+                             </div>
+                        </div>
+                    </article>
+                 </div>
+
+                 <template x-for="p in projects" :key="p.id">
+                    <div class="masonry-item">
+                        <article class="noise border border-[color:var(--border)] bg-[color:var(--card)] overflow-hidden hover:shadow-glow-red transition-shadow duration-300">
+                             <div class="h-48 w-full" :style="`background: ${p.bg}`"></div>
+                             <div class="p-6">
+                                 <h3 class="font-bold text-lg" x-text="p.title"></h3>
+                                 <p class="text-sm text-[color:var(--muted)]" x-text="p.subtitle"></p>
+                                 <div class="mt-4 flex flex-wrap gap-2">
+                                     <template x-for="t in p.tags">
+                                         <span class="text-xs px-2 py-1 bg-[color:var(--fg)]/5 rounded-md" x-text="t"></span>
+                                     </template>
+                                 </div>
+                             </div>
+                        </article>
+                    </div>
+                 </template>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section class="py-16 sm:py-24" x-data="statsCounter()" x-init="init()">
+            <div data-stats-counter class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value"><span x-text="counters.clients"></span><span x-text="stats.clients?.suffix"></span></div>
+                    <div class="stat-label" x-text="stats.clients?.label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"><span x-text="counters.projects"></span><span x-text="stats.projects?.suffix"></span></div>
+                    <div class="stat-label" x-text="stats.projects?.label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"><span x-text="counters.cities"></span><span x-text="stats.cities?.suffix"></span></div>
+                    <div class="stat-label" x-text="stats.cities?.label"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value"><span x-text="counters.years"></span><span x-text="stats.years?.suffix"></span></div>
+                    <div class="stat-label" x-text="stats.years?.label"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-10 sm:py-20 testimonials-section" x-data="testimonialsCarousel()" x-init="init()">
+            <div class="mb-10" data-reveal>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">ماذا يقول <span class="text-brand-red">عملاؤنا</span></h2>
+                <p class="mt-2 text-[color:var(--muted)]">آراء حقيقية من عملاء سعداء.</p>
+            </div>
+
+            <div class="relative" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
+                <!-- Main Testimonial -->
+                <div class="testimonial-card max-w-3xl mx-auto" data-reveal>
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="testimonial-avatar">
+                            <span x-text="current.avatar"></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg text-[color:var(--fg)]" x-text="current.name"></h4>
+                            <p class="text-sm text-[color:var(--muted)]" x-text="current.role"></p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-xs text-[color:var(--muted)]" x-text="current.location"></span>
+                                <span class="text-xs px-2 py-0.5 bg-brand-red/20 text-brand-red rounded-full" x-text="current.project"></span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <template x-for="star in getStars(current.rating)" :key="star">
+                                <svg class="testimonial-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                            </template>
+                        </div>
+                    </div>
+                    <p class="testimonial-text" x-text="current.text"></p>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <div class="testimonial-nav">
+                        <button class="testimonial-nav-btn" @click="prev()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <button class="testimonial-nav-btn" @click="next()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dots -->
+                <div class="testimonial-dots">
+                    <template x-for="(t, index) in testimonials" :key="t.id">
+                        <button class="testimonial-dot" :class="{ 'active': currentIndex === index }" @click="goTo(index)"></button>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price Calculator Section -->
+        <section id="calculator" class="py-10 sm:py-20">
+            <div class="mb-10" data-reveal>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">حاسبة <span class="text-brand-red">الأسعار</span></h2>
+                <p class="mt-2 text-[color:var(--muted)]">احسب تكلفة طلبك بشكل تقريبي فوراً.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto" x-data="priceCalculator()">
+                <div class="calculator-card" data-reveal>
+                    <!-- Product Selection -->
+                    <div class="calculator-row">
+                        <label class="calculator-label">نوع المنتج</label>
+                        <select class="calculator-select" x-model="selectedProduct">
+                            <template x-for="(prod, key) in products" :key="key">
+                                <option :value="key" x-text="prod.name"></option>
+                            </template>
+                        </select>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="calculator-row">
+                        <label class="calculator-label">الكمية</label>
+                        <input type="number" class="calculator-input" x-model.number="quantity" :min="minQuantity" placeholder="أدخل الكمية">
+                    </div>
+
+                    <!-- Size -->
+                    <div class="calculator-row">
+                        <label class="calculator-label">المقاس</label>
+                        <div class="calculator-options">
+                            <template x-for="(s, key) in sizes" :key="key">
+                                <button class="calculator-option" :class="{ 'active': size === key }" @click="size = key" x-text="s.name"></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Finishing -->
+                    <div class="calculator-row">
+                        <label class="calculator-label">التشطيب</label>
+                        <div class="calculator-options">
+                            <template x-for="(f, key) in finishings" :key="key">
+                                <button class="calculator-option" :class="{ 'active': finishing === key }" @click="finishing = key" x-text="f.name"></button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Extra Options -->
+                    <div class="calculator-row">
+                        <label class="calculator-label">خيارات إضافية</label>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="calculator-checkbox" :class="{ 'active': design }" @click="design = !design">
+                                <div class="calculator-checkbox-box">
+                                    <svg x-show="design" class="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-[color:var(--fg)]">تصميم (+50 ر.س)</div>
+                                    <div class="text-xs text-[color:var(--muted)]">تصميم احترافي للمنتج</div>
+                                </div>
+                            </div>
+                            <div class="calculator-checkbox" :class="{ 'active': urgent }" @click="urgent = !urgent">
+                                <div class="calculator-checkbox-box">
+                                    <svg x-show="urgent" class="w-3 h-3 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-[color:var(--fg)]">طلب عاجل (+25%)</div>
+                                    <div class="text-xs text-[color:var(--muted)]">تسليم خلال 24 ساعة</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="calculator-total">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[color:var(--muted)]">السعر التقديري:</span>
+                            <div>
+                                <span class="calculator-price" x-text="finalPrice + ' ر.س'"></span>
+                                <template x-if="discount > 0">
+                                    <span class="calculator-discount" x-text="'خصم ' + discount + '%'"></span>
+                                </template>
+                            </div>
+                        </div>
+                        <button class="w-full py-4 rounded-xl bg-gradient-to-l from-mint to-brand-red text-white font-bold text-lg shadow-glow-red hover:scale-[1.01] transition-transform" @click="orderViaWhatsApp()">
+                            طلب عرض سعر عبر واتساب
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-10 sm:py-20" x-data="faqAccordion()">
+            <div class="mb-10" data-reveal>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">الأسئلة <span class="text-brand-red">الشائعة</span></h2>
+                <p class="mt-2 text-[color:var(--muted)]">كل ما تريد معرفته عن خدماتنا.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto" data-reveal>
+                <!-- Search -->
+                <div class="faq-search">
+                    <svg class="w-5 h-5 faq-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <input type="text" class="faq-search-input" placeholder="ابحث في الأسئلة..." x-model="searchQuery">
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="space-y-3">
+                    <template x-for="faq in filteredFaqs" :key="faq.id">
+                        <div class="faq-item" :class="{ 'open': isOpen(faq.id) }">
+                            <button class="faq-question" @click="toggle(faq.id)">
+                                <div class="faq-question-content">
+                                    <span class="faq-icon" x-text="faq.icon"></span>
+                                    <span x-text="faq.question"></span>
+                                </div>
+                                <div class="faq-toggle">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="faq-answer" x-show="isOpen(faq.id)" x-collapse x-cloak>
+                                <p x-text="faq.answer"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- No Results -->
+                <div class="text-center py-8" x-show="filteredFaqs.length === 0" x-cloak>
+                    <div class="text-4xl mb-3">🔍</div>
+                    <p class="text-[color:var(--muted)]">لم نجد نتائج لبحثك. جرب كلمات أخرى.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-10 sm:py-20">
+            <div class="noise p-8 sm:p-12 text-center" data-reveal>
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4">جاهز تبدأ مشروعك؟</h2>
+                <p class="text-[color:var(--muted)] mb-8 max-w-xl mx-auto">تواصل معنا الآن واحصل على استشارة مجانية. فريقنا جاهز لتحويل أفكارك إلى واقع مبهر.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a :href="'https://wa.me/' + SITE_CONFIG.whatsapp" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-l from-green-600 to-green-500 text-white font-bold rounded-2xl hover:scale-105 transition-transform shadow-lg">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        تواصل عبر واتساب
+                    </a>
+                    <a :href="'mailto:' + SITE_CONFIG.email" class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[color:var(--card)] border border-[color:var(--border)] text-[color:var(--fg)] font-bold rounded-2xl hover:bg-[color:var(--fg)]/10 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        راسلنا بالإيميل
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Compact Contact Floating Widget -->
+    <div class="wa-widget" x-data="whatsappWidget()" @keydown.escape.window="close()">
+        <!-- Dropdown Panel -->
+        <div class="wa-widget-dropdown" x-show="isOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-90 translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90 translate-y-2" x-cloak @click.outside="close()" id="contact-dropdown" role="menu">
+            <a class="wa-widget-dropdown-item" :href="'https://wa.me/' + whatsappNumber" target="_blank" rel="noopener noreferrer" role="menuitem">
+                <svg class="wa-widget-dropdown-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span>واتساب</span>
+            </a>
+            <a class="wa-widget-dropdown-item" :href="'tel:+' + whatsappNumber" role="menuitem">
+                <svg class="wa-widget-dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span>اتصل بنا</span>
+            </a>
+        </div>
+
+        <!-- Compact Glass Circle Button -->
+        <button class="wa-widget-btn" @click="toggle()" :aria-expanded="isOpen" aria-controls="contact-dropdown" aria-label="تواصل معنا">
+            <svg class="wa-widget-btn-icon" :class="{'is-open': isOpen}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </div>
+
+
+    <footer class="footer-section py-10 text-center text-sm text-[color:var(--muted)] border-t border-[color:var(--border)]" x-data="{
+        social: window.SITE_CONFIG?.social || {},
+        get hasSocial() { return Object.values(this.social).some(v => v); }
+    }">
+        <div x-show="hasSocial" class="footer-social-links flex items-center justify-center gap-4 mb-4">
+            <a x-show="social.twitter" :href="social.twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="footer-social-link">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a x-show="social.instagram" :href="social.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-link">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a x-show="social.snapchat" :href="social.snapchat" target="_blank" rel="noopener noreferrer" aria-label="Snapchat" class="footer-social-link">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.922-.214.04-.012.06-.012.105-.012.21 0 .39.09.51.24.045.06.09.15.09.27 0 .15-.06.27-.12.36-.12.15-.36.27-.66.39-.12.045-.27.105-.42.15-.285.12-.57.195-.585.585-.015.135.015.27.045.42.09.42.24.81.42 1.17.255.465.6.885 1.02 1.275.255.24.54.45.87.615.09.045.21.105.195.24-.015.12-.12.21-.18.255-.33.18-.72.3-1.155.405-.075.015-.12.045-.15.105-.03.075-.03.15-.05.24-.015.075-.03.15-.06.225-.045.105-.135.18-.24.21-.21.06-.45.09-.69.09-.255 0-.48-.03-.72-.075-.33-.06-.66-.105-1.02-.105-.12 0-.255.015-.375.03-1.005.18-1.83 1.23-3.285 1.44-.09.015-.18.015-.27.015-.09 0-.18 0-.27-.015-1.455-.21-2.28-1.26-3.285-1.44-.12-.015-.255-.03-.375-.03-.36 0-.69.045-1.02.105-.24.045-.465.075-.72.075-.24 0-.48-.03-.69-.09-.105-.03-.195-.105-.24-.21-.03-.075-.045-.15-.06-.225-.015-.09-.03-.165-.05-.24-.03-.06-.075-.09-.15-.105-.435-.105-.825-.225-1.155-.405-.06-.045-.165-.135-.18-.255-.015-.135.105-.195.195-.24.33-.165.615-.375.87-.615.42-.39.765-.81 1.02-1.275.18-.36.33-.75.42-1.17.03-.15.06-.285.045-.42-.015-.39-.3-.465-.585-.585-.15-.045-.3-.105-.42-.15-.3-.12-.54-.24-.66-.39-.06-.09-.12-.21-.12-.36 0-.12.045-.21.09-.27.12-.15.3-.24.51-.24.045 0 .065 0 .105.012.263.094.622.228.922.214.198 0 .326-.045.401-.09-.008-.165-.018-.33-.03-.51l-.003-.06c-.104-1.628-.23-3.654.299-4.847C7.653 1.069 11.016.793 12.006.793h.2z"/></svg>
+            </a>
+            <a x-show="social.tiktok" :href="social.tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="footer-social-link">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13a8.28 8.28 0 005.58 2.16v-3.45a4.84 4.84 0 01-1.99-2.58 4.83 4.83 0 01-.01-2.44z"/></svg>
+            </a>
+        </div>
+        <p>© <span x-text="new Date().getFullYear()"></span> <span x-text="window.SITE_CONFIG?.brand?.name || 'Safi Group'"></span></p>
+    </footer>
+
+
+    <!-- ===== Event Splash Added ===== -->
+    <script src="assets/events/core.splash.js"></script>
+
+</body>
+</html>

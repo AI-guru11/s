@@ -1,0 +1,320 @@
+// ==============================================
+// بيانات معرض الأعمال والمشاريع
+// Portfolio & Projects Data
+// ==============================================
+// يمكنك إضافة أو تعديل المشاريع بسهولة من هنا
+
+const PORTFOLIO_DATA = {
+
+  // ═══════════════════════════════════════
+  // أعمالنا - تصنيفات رئيسية (Our Works Categories)
+  // ═══════════════════════════════════════
+  workCategories: [
+    {
+      id: 'creative-design',
+      name: 'تصميم إبداعي',
+      nameEn: 'Creative Design',
+      icon: '🎨',
+      count: 0 // سيتم حسابها تلقائياً
+    },
+    {
+      id: 'marketing',
+      name: 'تسويق',
+      nameEn: 'Marketing',
+      icon: '📊',
+      count: 0
+    },
+    {
+      id: 'advertising-printing',
+      name: 'إعلان وطباعة',
+      nameEn: 'Advertising & Printing',
+      icon: '🖨️',
+      count: 0
+    },
+    {
+      id: 'branding',
+      name: 'هوية بصرية',
+      nameEn: 'Branding',
+      icon: '✨',
+      count: 0
+    },
+    {
+      id: 'events',
+      name: 'فعاليات',
+      nameEn: 'Events',
+      icon: '🎪',
+      count: 0
+    },
+    {
+      id: 'digital',
+      name: 'تصميم رقمي',
+      nameEn: 'Digital Design',
+      icon: '💻',
+      count: 0
+    }
+  ],
+
+  // ═══════════════════════════════════════
+  // أعمالنا - مشاريع منجزة (Our Works Projects)
+  // ═══════════════════════════════════════
+  ourWorks: [
+    // تصميم إبداعي
+    {
+      id: 1,
+      title: 'هوية بصرية لمطعم فاخر',
+      category: 'creative-design',
+      image: '',
+      gradient: 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)',
+      icon: '🍽️',
+      description: 'تصميم هوية بصرية متكاملة تعكس الفخامة والأصالة',
+      tags: ['هوية بصرية', 'شعار', 'مطبوعات']
+    },
+    {
+      id: 2,
+      title: 'حملة إعلانية لمنتج تقني',
+      category: 'creative-design',
+      image: '',
+      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      icon: '📱',
+      description: 'حملة إعلانية شاملة عبر منصات التواصل',
+      tags: ['حملة', 'سوشيال ميديا', 'تصميم']
+    },
+    {
+      id: 3,
+      title: 'تصميم تغليف منتجات غذائية',
+      category: 'creative-design',
+      image: '',
+      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      icon: '📦',
+      description: 'تصاميم عبوات جذابة تبرز المنتج',
+      tags: ['تغليف', 'منتجات', 'طباعة']
+    },
+
+    // تسويق
+    {
+      id: 4,
+      title: 'استراتيجية تسويقية لشركة ناشئة',
+      category: 'marketing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      icon: '🎯',
+      description: 'خطة تسويقية متكاملة لإطلاق الشركة',
+      tags: ['استراتيجية', 'تسويق', 'تخطيط']
+    },
+    {
+      id: 5,
+      title: 'إدارة حسابات سوشيال ميديا',
+      category: 'marketing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+      icon: '💬',
+      description: 'إدارة احترافية لحسابات عميل لمدة 6 أشهر',
+      tags: ['سوشيال ميديا', 'محتوى', 'إدارة']
+    },
+    {
+      id: 6,
+      title: 'حملة SEO وتصدر نتائج البحث',
+      category: 'marketing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      icon: '🔍',
+      description: 'تحسين محركات البحث ورفع الترتيب',
+      tags: ['SEO', 'جوجل', 'تسويق']
+    },
+
+    // إعلان وطباعة
+    {
+      id: 7,
+      title: 'لوحة بايلون لمشروع سكني',
+      category: 'advertising-printing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+      icon: '🗼',
+      description: 'تنفيذ لوحة إعلانية مرتفعة 15 متر',
+      tags: ['بايلون', 'لوحات', 'إعلان']
+    },
+    {
+      id: 8,
+      title: 'تجهيز معرض تجاري',
+      category: 'advertising-printing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+      icon: '🎪',
+      description: 'تصميم وتنفيذ ستاند معرض متكامل',
+      tags: ['معارض', 'ستاندات', 'طباعة']
+    },
+    {
+      id: 9,
+      title: 'ستيكرات أسطول سيارات',
+      category: 'advertising-printing',
+      image: '',
+      gradient: 'linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)',
+      icon: '🚗',
+      description: 'تغليف 20 سيارة بتصميم موحد',
+      tags: ['ستيكرات', 'سيارات', 'دعاية']
+    },
+
+    // هوية بصرية
+    {
+      id: 10,
+      title: 'هوية شركة تقنية',
+      category: 'branding',
+      image: '',
+      gradient: 'linear-gradient(135deg, #1a2980, #26d0ce)',
+      icon: '💻',
+      description: 'شعار وهوية بصرية كاملة لشركة تقنية',
+      tags: ['شعار', 'هوية', 'تقنية']
+    },
+    {
+      id: 11,
+      title: 'هوية عيادة طبية',
+      category: 'branding',
+      image: '',
+      gradient: 'linear-gradient(135deg, #0ba360 0%, #3cba92 100%)',
+      icon: '🏥',
+      description: 'تصميم هوية احترافية لعيادة متخصصة',
+      tags: ['طبي', 'هوية', 'شعار']
+    },
+
+    // فعاليات
+    {
+      id: 12,
+      title: 'تنظيم مؤتمر سنوي',
+      category: 'events',
+      image: '',
+      gradient: 'linear-gradient(135deg, #ECE9E6, #FFFFFF)',
+      icon: '🎤',
+      description: 'تخطيط وتنفيذ مؤتمر ل500 شخص',
+      tags: ['مؤتمر', 'فعاليات', 'تنظيم']
+    },
+    {
+      id: 13,
+      title: 'حفل افتتاح فرع جديد',
+      category: 'events',
+      image: '',
+      gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+      icon: '🎉',
+      description: 'تنظيم حفل افتتاح متكامل',
+      tags: ['افتتاح', 'حفل', 'فعاليات']
+    },
+
+    // تصميم رقمي
+    {
+      id: 14,
+      title: 'موشن جرافيك ترويجي',
+      category: 'digital',
+      image: '',
+      gradient: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
+      icon: '🎬',
+      description: 'فيديو موشن جرافيك احترافي 60 ثانية',
+      tags: ['موشن', 'فيديو', 'رقمي']
+    },
+    {
+      id: 15,
+      title: 'تصميم واجهة تطبيق',
+      category: 'digital',
+      image: '',
+      gradient: 'linear-gradient(135deg, #11998e, #38ef7d)',
+      icon: '📱',
+      description: 'تصميم UI/UX لتطبيق جوال',
+      tags: ['UI/UX', 'تطبيق', 'تصميم']
+    }
+  ],
+
+  // ═══════════════════════════════════════
+  // مشاريع مستكشف الذوق (Brief Wizard)
+  // تستخدم للفلترة حسب التصنيف والنمط
+  // ═══════════════════════════════════════
+  briefProjects: [
+    {
+      id: 1,
+      title: 'فندق قصر السحاب',
+      category: 'decor',    // decor | branding | events
+      style: 'classic',     // classic | modern | neon
+      img: 'linear-gradient(135deg, #2c1a1a, #4a3b3b)',
+      desc: 'ديكور داخلي كلاسيكي فاخر.'
+    },
+    {
+      id: 2,
+      title: 'مقهى سايبر نيون',
+      category: 'decor',
+      style: 'neon',
+      img: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
+      desc: 'إضاءة نيون وتصميم عصري.'
+    },
+    {
+      id: 3,
+      title: 'هوية شركة تقنية',
+      category: 'branding',
+      style: 'modern',
+      img: 'linear-gradient(135deg, #1a2980, #26d0ce)',
+      desc: 'شعار وهوية بصرية بأسلوب بسيط.'
+    },
+    {
+      id: 4,
+      title: 'مطعم برجر مودرن',
+      category: 'decor',
+      style: 'modern',
+      img: 'linear-gradient(135deg, #ff512f, #dd2476)',
+      desc: 'تصميم داخلي بألوان حيوية.'
+    },
+    {
+      id: 5,
+      title: 'حفل زفاف ملكي',
+      category: 'events',
+      style: 'classic',
+      img: 'linear-gradient(135deg, #ECE9E6, #FFFFFF)',
+      desc: 'تنظيم وتنسيق كلاسيكي فخم.'
+    },
+    {
+      id: 6,
+      title: 'لاونج نيون',
+      category: 'decor',
+      style: 'neon',
+      img: 'linear-gradient(135deg, #11998e, #38ef7d)',
+      desc: 'أجواء ليلية بإضاءة خافتة ونيون.'
+    }
+  ],
+
+  // ═══════════════════════════════════════
+  // مشاريع معرض الأعمال (Work Gallery)
+  // ═══════════════════════════════════════
+  galleryProjects: [
+    {
+      id: 1,
+      title: 'Conference Branding',
+      subtitle: 'هوية بصرية لمؤتمر',
+      bg: 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)',
+      tags: ['طباعة', 'هوية']
+    },
+    {
+      id: 2,
+      title: 'Coffee Shop Neon',
+      subtitle: 'تنفيذ إضاءة نيون',
+      bg: 'linear-gradient(135deg, #2c0b0e 0%, #5c181f 100%)',
+      tags: ['نيون', 'ديكور']
+    },
+    {
+      id: 3,
+      title: 'Marketing Campaign',
+      subtitle: 'حملة إعلانية',
+      bg: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+      tags: ['تصميم', 'إعلانات']
+    }
+  ],
+
+  // ═══════════════════════════════════════
+  // بيانات قسم التحولات (Transformations)
+  // ═══════════════════════════════════════
+  transformations: {
+    title: 'قصة نجاح: إعادة إحياء علامة تجارية',
+    desc: 'شاهد كيف حولنا المساحة من تصميم تقليدي باهت إلى تجربة بصرية عصرية تنبض بالحياة، مما ساهم في جذب شريحة عملاء جديدة.',
+    stats: [
+      { label: 'زيادة المبيعات', value: '45%' },
+      { label: 'تفاعل العملاء', value: '3x' }
+    ]
+  }
+};
+
+// تصدير للاستخدام العام
+window.PORTFOLIO_DATA = PORTFOLIO_DATA;
