@@ -139,33 +139,96 @@
 {% endblock %}
 
 {% block main %}    <main id="top">
-        <section class="hero-fullscreen" id="hero-section">
-            <!-- Large Hero Logo — shrinks into header on scroll -->
-            <img src="assets/logo.webp" alt="Safi Group" width="180" height="180"
-                 class="hero-logo-large"
-                 :class="{'is-fading': headerShrink > 0.4}">
+        <section class="hero-fullscreen hero-v2" id="hero-section">
+            <div class="hero-v2-bg" aria-hidden="true">
+                <div class="hero-v2-grid"></div>
+                <div class="hero-v2-glow hero-v2-glow--red"></div>
+                <div class="hero-v2-glow hero-v2-glow--mint"></div>
+                <div class="hero-v2-haze"></div>
+                <div class="hero-v2-rings"></div>
+            </div>
 
-            <!-- Hero Content -->
-            <div class="hero-content">
-                <div class="space-y-8">
-                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
-                        <span class="block mb-3">
-                            <span class="hero-gradient-text">تخيل..</span>
-                        </span>
-                        <span class="block hero-implement-text">نُنفذ</span>
-                    </h1>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="portfolio.html" class="relative overflow-hidden rounded-2xl px-8 py-4 text-base font-bold text-white bg-gradient-to-l from-mint to-brand-red shadow-glow-neon hover:scale-[1.02] transition-transform">
-                            الأعمال
-                        </a>
-                        <a href="#products" class="noise relative overflow-hidden backdrop-blur-md rounded-2xl px-8 py-4 text-base font-bold text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 hover:border-white/20 transition-all duration-300 shadow-lg">
-                            المنتجات
-                        </a>
+            <div class="hero-v2-shell mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="hero-v2-frame noise">
+                    <div class="hero-v2-copy" data-reveal>
+                        <div class="hero-v2-chip">
+                            <span class="hero-v2-chip-dot"></span>
+                            <span>Premium Creative Execution</span>
+                        </div>
+
+                        <div class="space-y-5">
+                            <p class="hero-v2-kicker">SAFI GROUP — CREATIVE EXECUTION</p>
+
+                            <h1 class="hero-v2-title">
+                                <span class="hero-v2-title-top">تخيل الفكرة</span>
+                                <span class="hero-v2-title-bottom">ودعنا نُنفّذها</span>
+                            </h1>
+
+                            <p class="hero-v2-description">
+                                حلول إبداعية متكاملة تبدأ من الفكرة والهوية، وتمتد إلى المنتجات،
+                                المعارض، والطباعة والتنفيذ — بتجربة منظمة، واضحة، واحترافية.
+                            </p>
+                        </div>
+
+                        <div class="hero-v2-actions">
+                            <a href="brief.html" class="hero-v2-btn hero-v2-btn--primary">
+                                ابدأ البرف
+                            </a>
+
+                            <a href="portfolio.html" class="hero-v2-btn hero-v2-btn--ghost">
+                                استعرض الأعمال
+                            </a>
+
+                            <a href="products.html" class="hero-v2-btn hero-v2-btn--subtle">
+                                المتجر
+                            </a>
+                        </div>
+
+                        <div class="hero-v2-stats" aria-label="Safi hero highlights">
+                            <div class="hero-v2-stat">
+                                <strong>24+</strong>
+                                <span>منتج متنوع</span>
+                            </div>
+                            <div class="hero-v2-stat">
+                                <strong>15+</strong>
+                                <span>مشروع في الأعمال</span>
+                            </div>
+                            <div class="hero-v2-stat">
+                                <strong>3</strong>
+                                <span>مسارات خدمة رئيسية</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-v2-visual" aria-hidden="true">
+                        <div class="hero-v2-orbit hero-v2-orbit--outer"></div>
+                        <div class="hero-v2-orbit hero-v2-orbit--inner"></div>
+
+                        <div class="hero-v2-card hero-v2-card--main">
+                            <div class="hero-v2-card-badge">Safi Signature</div>
+                            <img
+                                src="assets/logo.webp"
+                                alt=""
+                                width="140"
+                                height="140"
+                                class="hero-v2-card-logo"
+                            >
+                            <div class="hero-v2-card-meta">
+                                <span>Creative • Print • Events</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-v2-card hero-v2-card--floating hero-v2-card--top">
+                            <span>Brand Systems</span>
+                        </div>
+
+                        <div class="hero-v2-card hero-v2-card--floating hero-v2-card--bottom">
+                            <span>Execution Ready</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <div class="hero-scroll-hint" :class="{'is-hidden': headerShrink > 0.2}">
                 <div class="hero-scroll-hint-line"></div>
                 <span class="hero-scroll-hint-text">Scroll</span>
