@@ -414,9 +414,9 @@ html.idea #ambient-glow-bg {
   left: -12rem;
   background:
     radial-gradient(circle at center,
-      rgba(229, 57, 53, 0.26) 0%,
-      rgba(198, 40, 40, 0.18) 28%,
-      rgba(198, 40, 40, 0.08) 52%,
+      rgba(229, 57, 53, 0.20) 0%,
+      rgba(198, 40, 40, 0.13) 28%,
+      rgba(198, 40, 40, 0.06) 52%,
       transparent 72%);
 }
 
@@ -799,6 +799,18 @@ html.idea #ambient-glow-bg {
   font-weight: 500;
 }
 
+.hero-fullscreen::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 2;
+}
+
 @keyframes heroGlowDrift {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -910,12 +922,17 @@ html.idea .hero-v2-stat span {
 
   .hero-v2-frame {
     padding: 1rem;
+    gap: 1rem;
     border-radius: 1.6rem;
   }
 
   .hero-v2-frame::before {
     inset: 0.6rem;
     border-radius: 1.2rem;
+  }
+
+  .hero-v2-copy {
+    gap: 1rem;
   }
 
   .hero-v2-title {
@@ -937,15 +954,31 @@ html.idea .hero-v2-stat span {
 
   .hero-v2-stats {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding-top: 0.25rem;
+  }
+
+  .hero-v2-stat {
+    min-width: 0;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .hero-v2-stat strong {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-v2-stat span {
+    font-size: 0.7rem;
   }
 
   .hero-v2-visual {
-    min-height: 22rem;
+    min-height: 17rem;
   }
 
   .hero-v2-card--main {
-    width: min(18rem, 92%);
+    width: min(16rem, 82%);
     border-radius: 1.5rem;
   }
 
