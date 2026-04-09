@@ -1069,9 +1069,12 @@ html.idea .product-card:hover {
 /* Product Price */
 .product-price-container {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.375rem 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--border);
 }
 
 .product-price {
@@ -1147,6 +1150,8 @@ html.idea .product-card:hover {
 }
 
 .product-action-btn-secondary {
+  flex: 0 0 auto;
+  width: 2.5rem;
   background: var(--card);
   color: var(--fg);
   border: 1px solid var(--border);
