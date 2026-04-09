@@ -17,7 +17,7 @@ env = Environment(
     keep_trailing_newline=True,
 )
 
-CACHE_VERSION = 'v28'
+CACHE_VERSION = 'v29'
 
 CORE_ASSETS = [
     './',
@@ -32,7 +32,7 @@ CORE_ASSETS = [
     './assets/icons/icon-192.webp',
     './assets/icons/icon-512.webp',
     './assets/logo.webp',
-    # ملفات البيانات
+    # data files
     './data/config.js',
     './data/products.js',
     './data/portfolio.js',
@@ -40,18 +40,17 @@ CORE_ASSETS = [
     './data/services.js',
     './data/testimonials.js',
     './data/faq.js',
-    # ===== Event Splash =====
+    # event splash system
     './assets/events/events.config.js',
     './assets/events/core.splash.js',
-    './assets/events/ramadan/ramadan.css',
-    './assets/events/ramadan/ramadan.js',
-    './assets/events/ramadan/ramadan.svg',
+    './assets/events/safi/safi.css',
+    './assets/events/safi/safi.js',
 ]
 
 PAGES = [
-    ('pages/index.html',     ROOT / 'index.html'),
+    ('pages/index.html', ROOT / 'index.html'),
     ('pages/portfolio.html', ROOT / 'portfolio.html'),
-    ('pages/services.html',  ROOT / 'services.html'),
+    ('pages/services.html', ROOT / 'services.html'),
 ]
 
 print('Building Safi Group site...')

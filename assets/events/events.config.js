@@ -4,8 +4,8 @@
 (function () {
   'use strict';
 
-  var ACTIVE_EVENT = '';                  // disabled for now
-  var EVENT_VERSION = '2026-safi-intro-prep-v1';
+  var ACTIVE_EVENT = 'safi';
+  var EVENT_VERSION = '2026-safi-intro-v2';
 
   window.__EVENT_SPLASH__ = {
     ACTIVE_EVENT: ACTIVE_EVENT,
