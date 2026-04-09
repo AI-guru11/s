@@ -74,10 +74,7 @@
     <script src="js/airtable-service.js"></script>
 {% endblock %}
 
-{% block post_app_scripts %}
-    <!-- nebula.js removed: replaced with CSS-only ambient glow for performance -->
-    <script src="js/floating-glyphs.js"></script>
-{% endblock %}
+{% block post_app_scripts %}{% endblock %}
 
 {% block body_open %}
 
@@ -103,7 +100,7 @@
                     <a class="hover:text-[color:var(--fg)] transition" href="services.html">الخدمات</a>
                     <a class="hover:text-[color:var(--fg)] transition" href="#products">المنتجات</a>
                     <a class="hover:text-[color:var(--fg)] transition" href="portfolio.html">أعمالنا</a>
-                    <a class="hover:text-[color:var(--fg)] transition" href="#brief">البرف</a>
+                    <a class="hover:text-[color:var(--fg)] transition" href="brief.html">البرف</a>
                     <a class="hover:text-[color:var(--fg)] transition" href="#contact">تواصل</a>
                 </nav>
 
@@ -132,7 +129,7 @@
                         <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="services.html">الخدمات</a>
                         <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#products" @click="mobileOpen=false">المنتجات</a>
                         <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="portfolio.html">أعمالنا</a>
-                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#brief" @click="mobileOpen=false">البرف</a>
+                        <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="brief.html">البرف</a>
                         <a class="block rounded-2xl px-5 py-4 bg-[color:var(--card)] ring-1 ring-[color:var(--border)] font-bold" href="#contact" @click="mobileOpen=false">تواصل</a>
                     </nav>
                 </div>
@@ -215,7 +212,7 @@
                     <h2 class="text-3xl sm:text-4xl font-black tracking-tight">خدماتنا</h2>
                     <p class="mt-2 text-[color:var(--muted)]">لماذا الصافي؟</p>
                 </div>
-                <a href="#brief" class="hidden sm:inline-flex rounded-2xl px-5 py-3 text-sm font-bold bg-[color:var(--card)] ring-1 ring-[color:var(--border)] hover:bg-[color:var(--fg)]/5 transition" data-reveal>
+                <a href="brief.html" class="hidden sm:inline-flex rounded-2xl px-5 py-3 text-sm font-bold bg-[color:var(--card)] ring-1 ring-[color:var(--border)] hover:bg-[color:var(--fg)]/5 transition" data-reveal>
                     جهّز البرف
                 </a>
             </div>
@@ -265,7 +262,7 @@
                 <article class="noise lg:col-span-4 rounded-[2rem] backdrop-blur-md shadow-glass p-8 flex flex-col justify-center text-center" data-reveal>
                     <h3 class="text-2xl font-black">جاهز نبدأ؟</h3>
                     <p class="mt-2 text-sm text-[color:var(--muted)]">جرب "مستكشف الذوق" الخاص بنا.</p>
-                    <a href="#brief" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-4 py-4 text-base font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.02]">
+                    <a href="brief.html" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-4 py-4 text-base font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.02]">
                         جربه الآن
                     </a>
                 </article>
@@ -411,7 +408,7 @@
                         </div>
 
                         <!-- CTA Button -->
-                        <a href="#brief" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.05]">
+                        <a href="brief.html" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.05]">
                             <span>ابدأ مشروعك</span>
                             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -611,7 +608,7 @@
                             </template>
                         </div>
 
-                        <a href="#brief" class="inline-flex items-center gap-2 text-brand-red font-bold hover:gap-4 transition-all">
+                        <a href="brief.html" class="inline-flex items-center gap-2 text-brand-red font-bold hover:gap-4 transition-all">
                             ابدأ رحلة التغيير لعلامتك
                             <svg class="w-5 h-5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -657,137 +654,18 @@
             </div>
         </section>
 
-        <section id="brief" class="py-10 sm:py-20" x-data="briefWizard()">
-            <div class="noise p-6 sm:p-10 relative overflow-hidden" data-reveal>
+        <section id="brief" class="py-10 sm:py-20">
+            <div class="noise p-6 sm:p-10 relative overflow-hidden text-center" data-reveal>
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[color:var(--fg)]/10 to-transparent"></div>
-
-                <div class="flex justify-between items-center mb-10 relative z-10">
-                    <div>
-                        <span class="section-label">BRIEF WIZARD — مستكشف الذوق</span>
-                        <h2 class="text-2xl sm:text-4xl font-black tracking-tight">مستكشف الذوق</h2>
-                        <p class="mt-2 text-[color:var(--muted)]">صمم تجربتك.. اختر ما يمثل رؤيتك.</p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-sm font-bold text-[color:var(--muted)]">خطوة <span x-text="step" class="text-[color:var(--fg)]"></span>/3</span>
-                        <div class="w-20 h-1.5 bg-[color:var(--fg)]/10 rounded-full overflow-hidden">
-                            <div class="h-full bg-brand-red transition-all duration-500" :style="`width: ${(step/3)*100}%`"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div x-show="step===1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <span class="w-2 h-8 rounded-full bg-brand-red"></span>
-                        ما هو نوع المشروع الذي تفكر فيه؟
-                    </h3>
-                    <div class="grid gap-5 sm:grid-cols-3">
-                        <button @click="setCategory('decor')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-br from-[#2c2c2c] via-[#1a1a1a] to-black transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 20px 20px;"></div>
-                            <div class="absolute -left-4 -bottom-4 text-9xl opacity-5 grayscale group-hover:opacity-10 transition-opacity duration-500 select-none">🏗️</div>
-                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">🏠</div>
-                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-brand-red transition-colors">ديكور وتصميم</h3>
-                                <p class="text-sm text-gray-400 font-medium leading-relaxed">تصميم داخلي، واجهات، مساحات تجارية.</p>
-                            </div>
-                        </button>
-
-                        <button @click="setCategory('branding')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-bl from-emerald-900 via-teal-900 to-slate-900 transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_rgba(0,229,160,0.25),_transparent_60%)]"></div>
-                            <div class="absolute -left-6 -top-6 text-9xl opacity-10 rotate-12 group-hover:rotate-45 transition-transform duration-700 select-none">🎨</div>
-                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent to-transparent">
-                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">✨</div>
-                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-brand-red transition-colors">هوية بصرية</h3>
-                                <p class="text-sm text-gray-300 font-medium leading-relaxed">شعارات، هوية شركات، مطبوعات.</p>
-                            </div>
-                        </button>
-
-                        <button @click="setCategory('events')" class="group relative h-64 w-full text-right rounded-[2rem] overflow-hidden border border-white/10 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-br from-rose-900 via-red-950 to-black transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_transparent_0deg,_rgba(255,200,0,0.1)_50deg,_transparent_100deg)] opacity-30"></div>
-                            <div class="absolute -right-6 -top-6 text-9xl opacity-5 group-hover:opacity-10 transition-opacity duration-500 select-none">🎉</div>
-                            <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
-                                <div class="w-14 h-14 mb-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-3xl shadow-lg group-hover:bg-white/20 transition-colors">🎪</div>
-                                <h3 class="text-2xl font-black text-white mb-1 group-hover:text-yellow-400 transition-colors">تنظيم فعاليات</h3>
-                                <p class="text-sm text-gray-300 font-medium leading-relaxed">مؤتمرات، معارض، حفلات، مسارح.</p>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <div x-show="step===2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <span class="w-2 h-8 rounded-full bg-brand-red"></span>
-                        أي نمط يميل إليه ذوقك أكثر؟
-                    </h3>
-                    <div class="grid gap-4 sm:grid-cols-3">
-                        <button @click="setStyle('modern')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">☁️</span>
-                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-brand-red group-hover:bg-brand-red transition-colors"></div>
-                            </div>
-                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-brand-red transition-colors">مودرن / بسيط</div>
-                            <div class="text-sm text-[color:var(--muted)] mt-2">خطوط نظيفة، مساحات بيضاء.</div>
-                        </button>
-
-                        <button @click="setStyle('classic')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">🏛️</span>
-                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-yellow-500 group-hover:bg-yellow-500 transition-colors"></div>
-                            </div>
-                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-yellow-500 transition-colors">كلاسيكي / فخم</div>
-                            <div class="text-sm text-[color:var(--muted)] mt-2">تفاصيل غنية، زخارف، ألوان دافئة.</div>
-                        </button>
-
-                        <button @click="setStyle('neon')" class="group p-6 rounded-3xl bg-[color:var(--fg)]/5 border border-[color:var(--border)] hover:bg-[color:var(--fg)]/10 hover:border-[color:var(--fg)]/30 text-right transition-all">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-4xl filter grayscale group-hover:grayscale-0 transition-all">⚡</span>
-                                <div class="w-6 h-6 rounded-full border-2 border-[color:var(--border)] group-hover:border-brand-red group-hover:bg-brand-red transition-colors"></div>
-                            </div>
-                            <div class="font-bold text-lg text-[color:var(--fg)] group-hover:text-brand-red transition-colors">نيون / جريء</div>
-                            <div class="text-sm text-[color:var(--muted)] mt-2">إضاءة عالية، طابع شبابي.</div>
-                        </button>
-                    </div>
-                    <button @click="step=1" class="mt-8 flex items-center gap-2 text-sm font-bold text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors">
-                        <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        رجوع للخطوة السابقة
-                    </button>
-                </div>
-
-                <div x-show="step===3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0">
-                    <div class="text-center mb-8">
-                        <div class="inline-block p-3 rounded-full bg-green-500/20 text-green-400 text-3xl mb-4">✨</div>
-                        <h3 class="text-2xl font-black text-[color:var(--fg)]">وجدنا ما يناسب ذوقك!</h3>
-                        <p class="text-sm text-[color:var(--muted)] mt-2">بناءً على اختيارك: <span class="font-bold text-[color:var(--fg)] px-2 py-1 rounded bg-[color:var(--fg)]/10" x-text="preferences.style"></span></p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                        <template x-for="project in matches" :key="project.id">
-                            <div class="group relative rounded-[2rem] overflow-hidden aspect-video border border-white/10 shadow-2xl">
-                                <div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110" :style="`background: ${project.img}`"></div>
-                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                                    <div class="font-bold text-lg text-white mb-1" x-text="project.title"></div>
-                                    <div class="text-sm text-gray-300 line-clamp-1" x-text="project.desc"></div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-[color:var(--fg)]/5 to-[color:var(--fg)]/10 rounded-[2rem] p-6 border border-[color:var(--border)] text-center">
-                        <h4 class="font-bold text-lg mb-6 text-[color:var(--fg)]">لنحول هذه الرؤية إلى واقع 🔻</h4>
-                        <div class="grid gap-3 sm:grid-cols-2 mb-4">
-                            <input x-model="contact.name" type="text" placeholder="الاسم الكريم" class="w-full p-4 rounded-xl bg-[color:var(--bg)] border border-[color:var(--border)] outline-none focus:border-brand-red focus:bg-[color:var(--card)] transition text-[color:var(--fg)] placeholder-[color:var(--muted)]">
-                            <input x-model="contact.phone" type="tel" placeholder="رقم الجوال" class="w-full p-4 rounded-xl bg-[color:var(--bg)] border border-[color:var(--border)] outline-none focus:border-brand-red focus:bg-[color:var(--card)] transition text-[color:var(--fg)] placeholder-[color:var(--muted)]">
-                        </div>
-                        <button @click="sendRequest()" class="w-full py-4 rounded-xl bg-gradient-to-l from-mint to-brand-red text-white font-bold text-lg shadow-glow-red hover:scale-[1.01] transition-transform flex items-center justify-center gap-2">
-                            <span>•</span> أرسل طلب استشارة مجانية
-                        </button>
-                    </div>
-                    
-                    <button @click="reset()" class="mt-6 w-full text-center text-sm font-medium text-[color:var(--muted)] hover:text-[color:var(--fg)] transition-colors">بدء من جديد ↻</button>
-                </div>
+                <span class="section-label">BRIEF WIZARD — مستكشف الذوق</span>
+                <h2 class="mt-2 text-2xl sm:text-4xl font-black tracking-tight">ابدأ مشروعك معنا</h2>
+                <p class="mt-3 text-[color:var(--muted)] max-w-xl mx-auto">صمّم تجربتك واختر الأسلوب الذي يمثّل رؤيتك — نساعدك في الوصول إلى النتيجة المثالية.</p>
+                <a href="brief.html" class="mt-8 inline-flex items-center gap-3 rounded-2xl px-8 py-4 text-base font-bold bg-gradient-to-l from-mint to-brand-red text-white shadow-glow-red transition-transform hover:scale-[1.02]">
+                    جرب مستكشف الذوق
+                    <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
             </div>
         </section>
 
