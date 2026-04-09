@@ -4,7 +4,7 @@
   GENERATED FILE — do not edit. Run: python build.py
 */
 
-const CACHE_VERSION = 'v28';
+const CACHE_VERSION = 'v29';
 const CACHE_NAME = `safi-pwa-${CACHE_VERSION}`;
 
 // Core assets (same-origin)
@@ -31,9 +31,8 @@ const CORE_ASSETS = [
 './data/faq.js',
 './assets/events/events.config.js',
 './assets/events/core.splash.js',
-'./assets/events/ramadan/ramadan.css',
-'./assets/events/ramadan/ramadan.js',
-'./assets/events/ramadan/ramadan.svg'
+'./assets/events/safi/safi.css',
+'./assets/events/safi/safi.js'
 ];
 
 self.addEventListener('install', (event) => {

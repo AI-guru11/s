@@ -4,8 +4,8 @@
 (function () {
   'use strict';
 
-  var ACTIVE_EVENT = 'ramadan';          // "ramadan" | "eid" | "national-day" | ""
-  var EVENT_VERSION = '2026-ramadan-v1'; // bump to force replay after updates
+  var ACTIVE_EVENT = 'safi';
+  var EVENT_VERSION = '2026-safi-intro-v2';
 
   window.__EVENT_SPLASH__ = {
     ACTIVE_EVENT: ACTIVE_EVENT,
