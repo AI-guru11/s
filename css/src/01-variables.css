@@ -1,0 +1,77 @@
+/* ====================================== */
+/* 01. VARIABLES (THEME CONFIG)           */
+/* ====================================== */
+:root {
+  /* --- DARK MODE (DEFAULT) --- AI Agency: Deep Charcoal + Red & Mint */
+  --bg: #080809;
+  --bg2: #0B0B0D;
+  --fg: rgba(255, 255, 255, 0.95);
+  --muted: rgba(255, 255, 255, 0.60);
+
+  /* Glass layers - premium transparency */
+  --card: rgba(18, 18, 20, 0.7);
+  --border: rgba(255, 255, 255, 0.08);
+  --grid: rgba(255, 255, 255, 0.04);
+
+  /* Brand Red palette - Safi Group */
+  --brand-red: #E53935;
+  --brand-red-light: #EF5350;
+  --brand-red-dark: #C62828;
+  --rim-glow: rgba(229, 57, 53, 0.30);
+
+  /* Mint accent */
+  --mint-primary: #81D8D0;
+  --mint-glow: rgba(129, 216, 208, 0.15);
+
+  /* Ambient glow layers (replaces JS canvas) */
+  --glow-red: rgba(229, 57, 53, 0.12);
+  --glow-mint: rgba(129, 216, 208, 0.12);
+
+  /* Edge effects - Red & Mint gradient */
+  --edge-line-strong: rgba(229, 57, 53, 0.40);
+  --edge-line-soft: rgba(129, 216, 208, 0.12);
+
+  /* Glass glow - Red accent */
+  --glass-glow: rgba(229, 57, 53, 0.25);
+
+  /* Interactive gradient */
+  --accent-gradient: linear-gradient(135deg, #E53935, #81D8D0);
+}
+
+html.idea {
+  /* --- LIGHT MODE --- AI Agency: Clean white + Red & Mint */
+  --bg: #FAFAFA;
+  --bg2: #F0F0F0;
+
+  --fg: #111827;
+  --muted: #6B7280;
+
+  /* Glass layers - light mode */
+  --card: rgba(255, 255, 255, 0.75);
+  --border: rgba(0, 0, 0, 0.07);
+  --grid: rgba(0, 0, 0, 0.03);
+
+  /* Brand Red palette - Safi Group (light mode) */
+  --brand-red: #D32F2F;
+  --brand-red-light: #E53935;
+  --brand-red-dark: #B71C1C;
+  --rim-glow: rgba(211, 47, 47, 0.25);
+
+  /* Mint accent */
+  --mint-primary: #00C88C;
+  --mint-glow: rgba(0, 200, 140, 0.12);
+
+  /* Ambient glow layers */
+  --glow-red: rgba(229, 57, 53, 0.08);
+  --glow-mint: rgba(0, 200, 140, 0.08);
+
+  /* Edge effects - Red & Mint gradient */
+  --edge-line-strong: rgba(211, 47, 47, 0.30);
+  --edge-line-soft: rgba(0, 200, 140, 0.10);
+
+  /* Glass glow - Red accent */
+  --glass-glow: rgba(211, 47, 47, 0.20);
+
+  /* Interactive gradient */
+  --accent-gradient: linear-gradient(135deg, #D32F2F, #00C88C);
+}

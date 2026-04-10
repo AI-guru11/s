@@ -1,5 +1,12 @@
+/*
+ * AUTO-GENERATED FILE — DO NOT EDIT DIRECTLY.
+ * Source files live in css/src/
+ * Built by build.py
+ */
+
+
 /* ====================================== */
-/* 1. FONTS & RESET                       */
+/* 00. FONTS & RESET                      */
 /* ====================================== */
 @font-face {
   font-family: 'Tajawal';
@@ -15,7 +22,7 @@ html {
 }
 
 /* ====================================== */
-/* 2. VARIABLES (THEME CONFIG)            */
+/* 01. VARIABLES (THEME CONFIG)           */
 /* ====================================== */
 :root {
   /* --- DARK MODE (DEFAULT) --- AI Agency: Deep Charcoal + Red & Mint */
@@ -93,7 +100,7 @@ html.idea {
 }
 
 /* ====================================== */
-/* 3. VISUAL EFFECTS (GLASS NOISE)        */
+/* 02. VISUAL EFFECTS (GLASS NOISE)       */
 /* ====================================== */
 .noise {
   position: relative;
@@ -213,7 +220,7 @@ footer .noise::after {
 }
 
 /* ====================================== */
-/* 3b. FIXED HEADER — TRANSPARENT→SOLID   */
+/* 03. FIXED HEADER — TRANSPARENT→SOLID   */
 /* ====================================== */
 
 .site-header {
@@ -292,10 +299,8 @@ html.idea .site-header.is-scrolled {
   opacity: 1;
 }
 
-
-
 /* ====================================== */
-/* 4. HERO SECTION & AMBIENT GLOW BG     */
+/* 04. AMBIENT GLOW BACKGROUND            */
 /* ====================================== */
 
 /* CSS-Only Ambient Glow Background (replaces JS canvas for performance) */
@@ -358,7 +363,7 @@ html.idea #ambient-glow-bg {
 }
 
 /* ====================================== */
-/* 4b. HERO V2 — SAFI PREMIUM SKELETON    */
+/* 05. HERO SECTION                       */
 /* ====================================== */
 
 .hero-fullscreen {
@@ -1003,26 +1008,8 @@ html.idea .hero-v2-stat span {
   }
 }
 
-/* Z-Index Layering Fix - Ensure content stays above background */
-body > section,
-body > main {
-  position: relative;
-  z-index: 1;
-}
-
-/* Performance optimization */
-@media (prefers-reduced-motion: reduce) {
-  #ambient-glow-bg::before,
-  #ambient-glow-bg::after {
-    display: none;
-  }
-  .partners-glass-scroll {
-    animation: none !important;
-  }
-}
-
 /* ====================================== */
-/* 4. PREMIUM TYPOGRAPHY                  */
+/* 06. PREMIUM TYPOGRAPHY                 */
 /* ====================================== */
 
 /* Section Labels (Small Uppercase Category Indicators) */
@@ -1050,8 +1037,15 @@ h2, h3 {
 }
 
 /* ====================================== */
-/* CONTENT VISIBILITY (off-screen perf)   */
+/* 07. PERFORMANCE & GPU OPTIMISATIONS    */
 /* ====================================== */
+
+/* Z-Index Layering Fix - Ensure content stays above background */
+body > section,
+body > main {
+  position: relative;
+  z-index: 1;
+}
 
 /* Defer rendering of heavy below-the-fold sections */
 #products,
@@ -1063,10 +1057,7 @@ h2, h3 {
   contain-intrinsic-size: auto 600px;
 }
 
-/* ====================================== */
-/* 5. ANIMATIONS & INTERACTIONS           */
-/* ====================================== */
-
+/* Scroll-triggered reveal */
 [data-reveal] {
   opacity: 1;
   transform: translateY(0) translateZ(0);
@@ -1087,8 +1078,19 @@ h2, h3 {
   transform: translateZ(0);
 }
 
+/* Reduced motion: disable ambient and partners animations */
+@media (prefers-reduced-motion: reduce) {
+  #ambient-glow-bg::before,
+  #ambient-glow-bg::after {
+    display: none;
+  }
+  .partners-glass-scroll {
+    animation: none !important;
+  }
+}
+
 /* ====================================== */
-/* 5. PRODUCTS SLIDER SYSTEM              */
+/* 08. PRODUCTS SLIDER SYSTEM & CARDS     */
 /* ====================================== */
 
 /* Category Row Container */
@@ -1335,11 +1337,10 @@ html.idea .slider-arrow:hover {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
-
 }
 
 /* ====================================== */
-/* 6. PRODUCT CARD STYLES                 */
+/* PRODUCT CARD STYLES                    */
 /* ====================================== */
 
 .product-card {
@@ -1664,7 +1665,7 @@ html.idea .product-card:hover {
 }
 
 /* ====================================== */
-/* 7. PRODUCT MODAL                       */
+/* 09. PRODUCT MODAL                      */
 /* ====================================== */
 
 .product-modal-overlay {
@@ -1841,23 +1842,10 @@ html.idea .product-card:hover {
 }
 
 /* ====================================== */
-/* 9. LAZY LOADING                        */
+/* 10. CART + WHATSAPP WIDGETS            */
 /* ====================================== */
 
-.lazy-image {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.lazy-image.loaded {
-  opacity: 1;
-}
-
-
-/* ====================================== */
-/* 10. CART FLOATING BUTTON               */
-/* ====================================== */
-
+/* Cart Floating Button */
 .cart-floating {
   position: fixed;
   bottom: 1.5rem;
@@ -1899,8 +1887,131 @@ html.idea .product-card:hover {
 }
 
 /* ====================================== */
+/* WhatsApp Compact Glass Widget          */
+/* ====================================== */
+
+.wa-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Compact Glass Circle Button */
+.wa-widget-btn {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.wa-widget-btn:hover {
+  transform: scale(1.08);
+  border-color: var(--mint-primary);
+  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.15);
+}
+
+.wa-widget-btn:focus-visible {
+  outline: 2px solid var(--mint-primary);
+  outline-offset: 2px;
+}
+
+.wa-widget-btn-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.wa-widget-btn-icon.is-open {
+  transform: rotate(90deg);
+}
+
+/* Dropdown Panel */
+.wa-widget-dropdown {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 0;
+  min-width: 160px;
+  background: var(--card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  padding: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.wa-widget-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.6rem 0.875rem;
+  border-radius: 0.625rem;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+
+.wa-widget-dropdown-item:hover {
+  background: rgba(0, 229, 160, 0.1);
+  color: var(--mint-primary);
+}
+
+.wa-widget-dropdown-item:focus-visible {
+  outline: 2px solid var(--mint-primary);
+  outline-offset: -2px;
+  border-radius: 0.625rem;
+}
+
+.wa-widget-dropdown-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+/* Mobile safe margin */
+@media (max-width: 480px) {
+  .wa-widget {
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+
+/* ====================================== */
 /* 11. UTILITIES                          */
 /* ====================================== */
+
+/* Lazy Image */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
@@ -1908,7 +2019,7 @@ html.idea .product-card:hover {
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
 
-
+/* Alpine.js cloak */
 [x-cloak] { display: none !important; }
 
 /* Line Clamp Utility */
@@ -1925,7 +2036,6 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 
 /* ====================================== */
 /* 12. TESTIMONIALS CAROUSEL              */
@@ -2218,7 +2328,7 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
 }
 
 /* ====================================== */
-/* 15. PRICE CALCULATOR                   */
+/* PRICE CALCULATOR                       */
 /* ====================================== */
 
 .calculator-card {
@@ -2353,120 +2463,7 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
 }
 
 /* ====================================== */
-/* 16. COMPACT CONTACT FLOATING WIDGET    */
-/* ====================================== */
-
-.wa-widget {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-/* --- Compact Glass Circle Button --- */
-.wa-widget-btn {
-  position: relative;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  background: var(--card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  color: var(--fg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.wa-widget-btn:hover {
-  transform: scale(1.08);
-  border-color: var(--mint-primary);
-  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.15);
-}
-
-.wa-widget-btn:focus-visible {
-  outline: 2px solid var(--mint-primary);
-  outline-offset: 2px;
-}
-
-.wa-widget-btn-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: transform 0.2s ease;
-}
-
-.wa-widget-btn-icon.is-open {
-  transform: rotate(90deg);
-}
-
-/* --- Dropdown Panel --- */
-.wa-widget-dropdown {
-  position: absolute;
-  bottom: 3.5rem;
-  left: 0;
-  min-width: 160px;
-  background: var(--card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 0.875rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  padding: 0.375rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-}
-
-.wa-widget-dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.6rem 0.875rem;
-  border-radius: 0.625rem;
-  font-family: 'Tajawal', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--fg);
-  text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
-  cursor: pointer;
-}
-
-.wa-widget-dropdown-item:hover {
-  background: rgba(0, 229, 160, 0.1);
-  color: var(--mint-primary);
-}
-
-.wa-widget-dropdown-item:focus-visible {
-  outline: 2px solid var(--mint-primary);
-  outline-offset: -2px;
-  border-radius: 0.625rem;
-}
-
-.wa-widget-dropdown-icon {
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
-}
-
-/* --- Mobile safe margin --- */
-@media (max-width: 480px) {
-  .wa-widget {
-    bottom: 1rem;
-    left: 1rem;
-  }
-}
-
-/* ====================================== */
-/* 15. PARTNERS GLASS CAROUSEL - Ultimate UI */
+/* 15. PARTNERS GLASS CAROUSEL            */
 /* ====================================== */
 
 /* Full-Bleed Glass Section */
@@ -2479,7 +2476,7 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
   padding: 4rem 0;
   margin-bottom: 4rem;
   overflow: hidden;
-  min-height: 10rem; /* h-40 equivalent for breathing room */
+  min-height: 10rem;
 }
 
 /* Container for content */
@@ -2497,9 +2494,9 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
 .partners-glass-track {
   display: flex;
   overflow-x: hidden;
-  overflow-y: visible; /* Prevent clipping of glow effect */
+  overflow-y: visible;
   width: 100%;
-  padding: 1.5rem 0; /* py-6 for vertical centering */
+  padding: 1.5rem 0;
 }
 
 /* Scrolling Container with items centered */
@@ -2510,7 +2507,7 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
   padding: 0 2rem;
   animation: partners-glass-scroll 40s linear infinite;
   will-change: transform;
-  min-height: 5rem; /* Ensure height for glow visibility */
+  min-height: 5rem;
 }
 
 @keyframes partners-glass-scroll {
@@ -2535,30 +2532,25 @@ html.idea ::-webkit-scrollbar-thumb { background: #ccc; }
   gap: 0.75rem;
   flex-shrink: 0;
 
-  /* Capsule sizing with breathing room */
-  min-height: 3.5rem; /* Increased for logo breathing room */
+  min-height: 3.5rem;
   height: auto;
 
-  /* Capsule styling */
   background: rgba(255, 255, 255, 0.05);
   border-radius: 9999px;
-  padding: 0.75rem 1.5rem; /* Increased padding for more space */
+  padding: 0.75rem 1.5rem;
 
-  /* Ring border */
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 
-  /* Default state: grayscale + low opacity */
   filter: grayscale(1);
   opacity: 0.5;
 
-  /* Smooth transitions */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   cursor: pointer;
   white-space: nowrap;
 }
 
-/* Hover State: Full color + scale + glow - Red & Mint accent */
+/* Hover State: Full color + scale + glow */
 .partner-capsule:hover {
   filter: grayscale(0) drop-shadow(0 0 16px rgba(129, 216, 208, 0.40));
   opacity: 1;
@@ -2589,9 +2581,9 @@ html.idea .partner-capsule:hover {
 
 /* Partner Icon */
 .partner-icon {
-  font-size: 2rem; /* Increased from 1.5rem for better visibility */
+  font-size: 2rem;
   line-height: 1;
-  max-height: 4rem; /* max-h-16 equivalent */
+  max-height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2605,7 +2597,7 @@ html.idea .partner-capsule:hover {
 
 /* Partner Name */
 .partner-name {
-  font-size: 0.9375rem; /* Slightly increased from 0.875rem */
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.025em;
   color: currentColor;
@@ -2718,7 +2710,7 @@ html.idea .footer-social-link:hover {
 }
 
 /* ====================================== */
-/* SKELETON LOADER - AIRTABLE LOADING     */
+/* 16. SKELETON LOADER                    */
 /* ====================================== */
 
 .skeleton-category-row {
@@ -2808,7 +2800,7 @@ html.idea .error-message {
 }
 
 /* ====================================== */
-/* NEON PULSE EFFECT - WHATSAPP BUTTONS   */
+/* 17. NEON PULSE EFFECT                  */
 /* ====================================== */
 
 .neon-pulse {
@@ -2863,17 +2855,4 @@ html.idea .neon-pulse::before {
 
 html.idea .neon-pulse:hover::before {
   opacity: 0.4;
-}
-
-html.idea @keyframes neon-pulse-anim {
-  0%, 100% {
-    box-shadow:
-      0 0 15px rgba(0, 200, 140, 0.25),
-      0 0 30px rgba(211, 47, 47, 0.15);
-  }
-  50% {
-    box-shadow:
-      0 0 25px rgba(0, 200, 140, 0.4),
-      0 0 50px rgba(211, 47, 47, 0.25);
-  }
 }
