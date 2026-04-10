@@ -1,0 +1,15 @@
+/* ====================================== */
+/* 00. FONTS & RESET                      */
+/* ====================================== */
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Tajawal'), url('https://fonts.gstatic.com/s/tajawal/v9/I_yx41LuOBoxWj_JOOnV.woff2') format('woff2');
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,119 @@
+/* ====================================== */
+/* 02. VISUAL EFFECTS (GLASS NOISE)       */
+/* ====================================== */
+.noise {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--card);
+  border-radius: 24px; /* Premium rounded-3xl */
+
+  /* Optimized glassmorphism blur (16px for mobile perf) */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  /* Super-thin border */
+  border: 0.5px solid var(--border);
+
+  /* Glass depth shadow */
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* GPU acceleration */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Light mode glass adjustment */
+html.idea .noise {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Premium hover glow - Neon Pulse: Mint glow + Red accent */
+.noise:hover {
+  box-shadow:
+    0 0 25px rgba(129, 216, 208, 0.15),
+    0 8px 32px var(--glass-glow),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px) translateZ(0);
+  border-color: rgba(129, 216, 208, 0.25);
+}
+
+.noise:hover::after {
+  opacity: 0.8;
+  filter: drop-shadow(0 0 12px var(--rim-glow));
+}
+
+html.idea .noise:hover {
+  box-shadow:
+    0 0 25px rgba(0, 200, 140, 0.12),
+    0 8px 32px rgba(211, 47, 47, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 200, 140, 0.25);
+}
+
+/* Texture Overlay */
+.noise:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .06) 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, .05) 0 1px, transparent 2px);
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+  opacity: .35;
+  z-index: 0;
+}
+
+html.idea .noise:before {
+  /* تعديل النقش ليكون داكناً في الوضع النهاري */
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(0, 0, 0, .05) 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 30%, rgba(0, 0, 0, .04) 0 1px, transparent 2px);
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+.noise > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient Rim Edge - Red to Mint */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: 25px;
+  background:
+    linear-gradient(135deg, var(--brand-red) 0%, var(--mint-primary) 60%, transparent 90%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  filter: drop-shadow(0 0 6px var(--edge-line-soft));
+  opacity: .4;
+  mix-blend-mode: normal;
+  z-index: 10;
+}
+
+/* Remove noise borders from header/footer */
+header .noise::after,
+footer .noise::after {
+  display: none !important;
+}

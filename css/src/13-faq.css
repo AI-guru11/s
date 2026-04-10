@@ -1,0 +1,111 @@
+/* ====================================== */
+/* 13. FAQ ACCORDION                      */
+/* ====================================== */
+
+.faq-search {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.faq-search-input {
+  width: 100%;
+  padding: 1rem 1.5rem 1rem 3rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  color: var(--fg);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.faq-search-input:focus {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.15);
+}
+
+.faq-search-input::placeholder {
+  color: var(--muted);
+}
+
+.faq-search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(227, 30, 36, 0.25);
+}
+
+.faq-item.open {
+  border-color: var(--brand-red);
+  box-shadow: 0 4px 20px var(--glass-glow);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--brand-red);
+}
+
+.faq-question-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.faq-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.faq-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-toggle {
+  background: linear-gradient(135deg, #E53935, #81D8D0);
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}

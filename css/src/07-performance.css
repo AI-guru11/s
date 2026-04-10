@@ -1,0 +1,52 @@
+/* ====================================== */
+/* 07. PERFORMANCE & GPU OPTIMISATIONS    */
+/* ====================================== */
+
+/* Z-Index Layering Fix - Ensure content stays above background */
+body > section,
+body > main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Defer rendering of heavy below-the-fold sections */
+#products,
+#our-works,
+#testimonials,
+#faq,
+#brief {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Scroll-triggered reveal */
+[data-reveal] {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* GPU acceleration for animated elements */
+.product-card,
+.stat-card,
+.testimonial-card,
+.faq-item,
+.partner-capsule,
+.slider-arrow,
+.wa-widget-btn,
+.cart-floating-btn {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Reduced motion: disable ambient and partners animations */
+@media (prefers-reduced-motion: reduce) {
+  #ambient-glow-bg::before,
+  #ambient-glow-bg::after {
+    display: none;
+  }
+  .partners-glass-scroll {
+    animation: none !important;
+  }
+}
