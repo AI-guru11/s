@@ -1,14 +1,8 @@
 <!doctype html>
 <!-- GENERATED FILE — do not edit. Edit templates/ then run: python build.py -->
-<html lang="ar" dir="rtl" class="dark scroll-smooth is-splashing">
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
 
 <head>
-
-    <!-- Splash-first: hide main UI until splash takes over -->
-    <style>
-      html.is-splashing body > *:not(#event-splash) { visibility: hidden; }
-      html.is-splashing #event-splash { visibility: visible; }
-    </style>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -19,10 +13,9 @@
 
     <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
     <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
+    <link rel="preload" as="image" href="assets/logo.webp" fetchpriority="high">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -71,25 +64,23 @@
     <link rel="stylesheet" href="css/style.css" />
 
     
-    <!-- ===== Event Splash Added ===== -->
-    <script src="assets/events/events.config.js"></script>
 
     <!-- ملفات البيانات - يمكن تعديلها بسهولة -->
-    <script src="data/config.js"></script>
-    <script src="data/products.js"></script>
-    <script src="data/portfolio.js"></script>
-    <script src="data/partners.js"></script>
-    <script src="data/services.js"></script>
-    <script src="data/testimonials.js"></script>
-    <script src="data/faq.js"></script>
+    <script defer src="data/config.js"></script>
+    <script defer src="data/products.js"></script>
+    <script defer src="data/portfolio.js"></script>
+    <script defer src="data/partners.js"></script>
+    <script defer src="data/services.js"></script>
+    <script defer src="data/testimonials.js"></script>
+    <script defer src="data/faq.js"></script>
 
     <!-- منطق التطبيق -->
     <!-- Note: js/airtable-config.js is optional — add it here manually when configuring Airtable credentials -->
-    <script src="js/airtable-service.js"></script>
 
-    <script src="js/app.js"></script>
+
+    <script defer src="js/app.js"></script>
     
-    <script src="js/grainient.js"></script>
+    <script defer src="js/grainient.js"></script>
 
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -101,8 +92,6 @@
 
 
 
-    <!-- ===== Event Splash Added ===== -->
-    <div id="event-splash" aria-hidden="true"></div>
 
     <!-- Global Ambient Glow Background (CSS-only, replaces JS canvas for performance) -->
     <div id="ambient-glow-bg" aria-hidden="true"></div>
@@ -1064,8 +1053,8 @@
     </footer>
 
 
-    <!-- ===== Event Splash Added ===== -->
-    <script src="assets/events/core.splash.js"></script>
+
+
 
 </body>
 </html>

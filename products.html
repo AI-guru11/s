@@ -13,10 +13,9 @@
 
     <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
     <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
+    <link rel="preload" as="image" href="assets/logo.webp" fetchpriority="high">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -57,7 +56,7 @@
     <!-- Note: js/airtable-config.js is optional — add it here manually when configuring Airtable credentials -->
     <script src="js/airtable-service.js"></script>
 
-    <script src="js/app.js"></script>
+    <script defer src="js/app.js"></script>
     
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
