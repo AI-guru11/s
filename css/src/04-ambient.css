@@ -1,8 +1,7 @@
 /* ====================================== */
-/* 04. AMBIENT GLOW BACKGROUND            */
+/* 4. HERO SECTION & AMBIENT GLOW BG     */
 /* ====================================== */
 
-/* CSS-Only Ambient Glow Background (replaces JS canvas for performance) */
 #ambient-glow-bg {
   position: fixed;
   top: 0;
@@ -15,7 +14,6 @@
   pointer-events: none;
 }
 
-/* Two radial glow layers — Red top-left, Mint bottom-right */
 #ambient-glow-bg::before {
   content: "";
   position: absolute;
@@ -42,7 +40,6 @@
   transform: translateZ(0);
 }
 
-/* Film Grain Texture Overlay */
 #ambient-glow-bg > *,
 body::after {
   content: "";
@@ -53,10 +50,31 @@ body::after {
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px),
     repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px);
-  opacity: 0.3;
+  opacity: 0.18;
   mix-blend-mode: overlay;
 }
 
 html.idea #ambient-glow-bg {
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(139, 214, 205, 0.08), transparent 24%),
+    radial-gradient(circle at 82% 82%, rgba(212, 113, 122, 0.08), transparent 24%),
+    linear-gradient(180deg, #faf7f3 0%, #f4f0eb 100%);
+}
+
+html.idea #ambient-glow-bg::before,
+html.idea #ambient-glow-bg::after {
+  opacity: 0.42;
+}
+
+body > section,
+body > main {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ambient-glow-bg::before,
+  #ambient-glow-bg::after {
+    display: none;
+  }
 }

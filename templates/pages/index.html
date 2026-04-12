@@ -54,6 +54,7 @@
 {% endblock %}
 
 {% block body_attrs %}class="font-taj text-[color:var(--fg)] selection:bg-brand-red/30 selection:text-white transition-colors duration-500"
+    data-page="home"
     style="background: var(--bg);"{% endblock %}
 
 {% block pre_app_scripts %}
@@ -74,7 +75,9 @@
     <script src="js/airtable-service.js"></script>
 {% endblock %}
 
-{% block post_app_scripts %}{% endblock %}
+{% block post_app_scripts %}
+    <script src="js/grainient.js"></script>
+{% endblock %}
 
 {% block body_open %}
 
@@ -139,92 +142,70 @@
 {% endblock %}
 
 {% block main %}    <main id="top">
-        <section class="hero-fullscreen hero-v2" id="hero-section">
-            <div class="hero-v2-bg" aria-hidden="true">
-                <div class="hero-v2-grid"></div>
-                <div class="hero-v2-glow hero-v2-glow--red"></div>
-                <div class="hero-v2-glow hero-v2-glow--mint"></div>
-                <div class="hero-v2-haze"></div>
-                <div class="hero-v2-rings"></div>
+        <section class="hero-fullscreen hero-v3" id="hero-section">
+            <div class="hero-v3-bg" aria-hidden="true">
+                <div
+                    id="hero-grainient"
+                    class="hero-v3-grainient"
+                    data-grainient
+                    data-time-speed="0.18"
+                    data-color-balance="0.02"
+                    data-warp-strength="1.10"
+                    data-warp-frequency="4.8"
+                    data-warp-speed="1.65"
+                    data-warp-amplitude="54"
+                    data-blend-angle="4"
+                    data-blend-softness="0.12"
+                    data-rotation-amount="240"
+                    data-noise-scale="1.4"
+                    data-grain-amount="0.08"
+                    data-grain-scale="1.6"
+                    data-grain-animated="0"
+                    data-contrast="1.18"
+                    data-gamma="1.02"
+                    data-saturation="1.02"
+                    data-center-x="0"
+                    data-center-y="0"
+                    data-zoom="0.94"
+                ></div>
+                <div class="hero-v3-scrim"></div>
+                <div class="hero-v3-vignette"></div>
+                <div class="hero-v3-rings"></div>
+                <div class="hero-v3-orb"></div>
+                <div class="hero-v3-noise"></div>
             </div>
 
-            <div class="hero-v2-shell mx-auto max-w-7xl px-4 sm:px-6">
-                <div class="hero-v2-frame noise">
-                    <div class="hero-v2-copy" data-reveal>
-                        <div class="hero-v2-chip">
-                            <span class="hero-v2-chip-dot"></span>
-                            <span>Premium Creative Execution</span>
+            <div class="hero-v3-shell mx-auto max-w-7xl px-4 sm:px-6">
+                <div class="hero-v3-content" data-reveal>
+                    <div class="hero-v3-copy">
+                        <div class="hero-v3-chip">
+                            <span class="hero-v3-chip-mark" aria-hidden="true"></span>
+                            <span>وكالة دعاية واعلان</span>
                         </div>
 
-                        <div class="space-y-5">
-                            <p class="hero-v2-kicker">SAFI GROUP — CREATIVE EXECUTION</p>
+                        <p class="hero-v3-kicker">SAFI GROUP — CREATIVE EXECUTION</p>
 
-                            <h1 class="hero-v2-title">
-                                <span class="hero-v2-title-top">تخيل الفكرة</span>
-                                <span class="hero-v2-title-bottom">ودعنا نُنفّذها</span>
-                            </h1>
+                        <h1 class="hero-v3-title">
+                            <span class="hero-v3-title-line">تخيل الفكرة..</span>
+                            <span class="hero-v3-title-line hero-v3-title-line--accent">ودعنا ننفذها</span>
+                        </h1>
 
-                            <p class="hero-v2-description">
-                                حلول إبداعية متكاملة تبدأ من الفكرة والهوية، وتمتد إلى المنتجات،
-                                المعارض، والطباعة والتنفيذ — بتجربة منظمة، واضحة، واحترافية.
-                            </p>
+                        <p class="hero-v3-description">
+                            حلول إبداعية متكاملة تبدأ من الفكرة والهوية، وتمتد إلى المنتجات،
+                            المعارض، والطباعة والتنفيذ — بتجربة منظمة، واضحة، واحترافية.
+                        </p>
+
+                        <div class="hero-v3-actions">
+                            <a href="products.html" class="hero-v3-btn hero-v3-btn--primary">منتجاتنا</a>
+                            <a href="#contact" class="hero-v3-btn hero-v3-btn--secondary">تواصل معنا</a>
                         </div>
 
-                        <div class="hero-v2-actions">
-                            <a href="brief.html" class="hero-v2-btn hero-v2-btn--primary">
-                                ابدأ البرف
-                            </a>
-
-                            <a href="portfolio.html" class="hero-v2-btn hero-v2-btn--ghost">
-                                استعرض الأعمال
-                            </a>
-
-                            <a href="products.html" class="hero-v2-btn hero-v2-btn--subtle">
-                                المتجر
-                            </a>
-                        </div>
-
-                        <div class="hero-v2-stats" aria-label="Safi hero highlights">
-                            <div class="hero-v2-stat">
-                                <strong>24+</strong>
-                                <span>منتج متنوع</span>
-                            </div>
-                            <div class="hero-v2-stat">
-                                <strong>15+</strong>
-                                <span>مشروع في الأعمال</span>
-                            </div>
-                            <div class="hero-v2-stat">
-                                <strong>3</strong>
-                                <span>مسارات خدمة رئيسية</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hero-v2-visual" aria-hidden="true">
-                        <div class="hero-v2-orbit hero-v2-orbit--outer"></div>
-                        <div class="hero-v2-orbit hero-v2-orbit--inner"></div>
-
-                        <div class="hero-v2-card hero-v2-card--main">
-                            <div class="hero-v2-card-badge">Safi Signature</div>
-                            <img
-                                src="assets/logo.webp"
-                                alt=""
-                                width="140"
-                                height="140"
-                                class="hero-v2-card-logo"
-                            >
-                            <div class="hero-v2-card-meta">
-                                <span>Creative • Print • Events</span>
-                            </div>
-                        </div>
-
-                        <div class="hero-v2-card hero-v2-card--floating hero-v2-card--top">
-                            <span>Brand Systems</span>
-                        </div>
-
-                        <div class="hero-v2-card hero-v2-card--floating hero-v2-card--bottom">
-                            <span>Execution Ready</span>
-                        </div>
+                        <a href="brief.html" class="hero-v3-link">
+                            <span>أو ابدأ البرف</span>
+                            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -241,7 +222,7 @@
     </main>
 
     <!-- Full-Bleed Glass Partners Section -->
-    <section class="partners-glass-section noise backdrop-blur-md shadow-glass bg-[color:var(--card)]/40 border-y border-[color:var(--border)]" x-data="partnersCarousel()">
+    <section class="partners-glass-section backdrop-blur-md shadow-glass bg-[color:var(--card)]/40" x-data="partnersCarousel()">
         <div class="partners-glass-container">
             <p class="text-xs font-bold text-[color:var(--muted)] tracking-[0.2em] uppercase mb-8 text-center opacity-70">شركاء النجاح في رحلتنا</p>
 

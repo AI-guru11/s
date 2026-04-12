@@ -8,7 +8,7 @@
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 1.25rem 0;
+  padding: 0.9rem 0;
   background: transparent;
   border-bottom: 1px solid transparent;
   backdrop-filter: none;
@@ -17,63 +17,122 @@
     padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 0.35s ease;
 }
 
-/* Scrolled state — solid + compact */
+.header-row {
+  position: relative;
+  min-height: 4.25rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    backdrop-filter 0.35s ease,
+    transform 0.35s ease;
+}
+
 .site-header.is-scrolled {
-  padding: 0.5rem 0;
-  background: rgba(8, 8, 9, 0.85);
-  border-bottom-color: var(--border);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  box-shadow:
-    0 1px 0 var(--edge-line-soft),
-    0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 0.58rem 0;
+  background: transparent;
+  border-bottom-color: transparent;
 }
 
-html.idea .site-header.is-scrolled {
-  background: rgba(250, 250, 250, 0.88);
-  box-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.04),
-    0 4px 24px rgba(0, 0, 0, 0.08);
+.site-header.is-scrolled .header-row {
+  background: linear-gradient(90deg, rgba(18, 141, 136, 0.18) 0%, rgba(26, 28, 34, 0.38) 48%, rgba(166, 31, 44, 0.18) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: none;
 }
 
-/* Header logo — hidden when over hero, visible when scrolled */
 .header-logo-img {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.75rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 0.85rem;
   object-fit: contain;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.header-brand-text {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+.header-brand-text,
+.header-nav {
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* When NOT scrolled: hide logo text in header (logo icon stays visible but subtle) */
-.site-header:not(.is-scrolled) .header-brand-text {
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-}
-
+.site-header:not(.is-scrolled) .header-brand-text,
 .site-header.is-scrolled .header-brand-text {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Desktop nav links — fade in on scroll */
-.header-nav {
-  transition: opacity 0.4s ease;
+  pointer-events: auto;
 }
 
 .site-header:not(.is-scrolled) .header-nav {
-  opacity: 0.5;
+  opacity: 0.86;
 }
 
 .site-header.is-scrolled .header-nav {
   opacity: 1;
+}
+
+.site-header:not(.is-scrolled) .header-row > .group,
+.site-header:not(.is-scrolled) .header-row > .flex {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header:not(.is-scrolled) .header-logo-img {
+  background: rgba(255,255,255,0.05);
+}
+
+.site-header:not(.is-scrolled) .group,
+.site-header:not(.is-scrolled) > .mx-auto > .header-row {
+  transform: none;
+}
+
+html.idea .site-header.is-scrolled .header-row {
+  background: linear-gradient(90deg, rgba(111, 205, 197, 0.16) 0%, rgba(255, 252, 249, 0.42) 48%, rgba(212, 113, 122, 0.14) 100%);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+html.idea .site-header:not(.is-scrolled) .header-logo-img {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+html.idea .site-header.is-scrolled .header-brand-text .block:last-child,
+html.idea .site-header:not(.is-scrolled) .header-brand-text .block:last-child {
+  color: rgba(16, 24, 40, 0.60);
+}
+
+.site-header:not(.is-scrolled) .flex.items-center.gap-3 > button:first-child {
+  display: none;
+}
+
+.site-header.is-scrolled .flex.items-center.gap-3 > button:first-child {
+  display: inline-flex;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 0.82rem 0;
+  }
+
+  .site-header.is-scrolled {
+    padding: 0.5rem 0;
+  }
+
+  .header-row {
+    min-height: 4rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .header-logo-img {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
 }
