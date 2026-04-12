@@ -3,7 +3,7 @@
 <html lang="ar" dir="rtl" class="dark scroll-smooth{% block html_classes %}{% endblock %}">
 
 <head>
-{% block head_splash_style %}{% endblock %}
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark light" />
@@ -13,7 +13,7 @@
 
     <link rel="icon" type="image/webp" href="assets/icons/icon-192.webp" />
     <link rel="apple-touch-icon" href="assets/icons/icon-192.webp" />
-
+    <link rel="preload" as="image" href="assets/logo.webp" fetchpriority="high">
 {% include "partials/head.html" %}
 
     {% block tailwind_config %}
@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     {% block pre_app_scripts %}{% endblock %}
-    <script src="js/app.js"></script>
+    <script defer src="js/app.js"></script>
     {% block post_app_scripts %}{% endblock %}
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

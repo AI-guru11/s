@@ -1,16 +1,9 @@
 {% extends "base.html" %}
 
-{% block html_classes %} is-splashing{% endblock %}
+{% block html_classes %}{% endblock %}
 {% block page_title %}Safi Group — تخيل.. نُنفذ{% endblock %}
 {% block page_description %}Safi Group — Creative hub with bento glass UI, briefing wizard, masonry work gallery, and Idea Light Mode.{% endblock %}
 
-{% block head_splash_style %}
-    <!-- Splash-first: hide main UI until splash takes over -->
-    <style>
-      html.is-splashing body > *:not(#event-splash) { visibility: hidden; }
-      html.is-splashing #event-splash { visibility: visible; }
-    </style>
-{% endblock %}
 
 {% block tailwind_config %}
     <script>
@@ -58,31 +51,27 @@
     style="background: var(--bg);"{% endblock %}
 
 {% block pre_app_scripts %}
-    <!-- ===== Event Splash Added ===== -->
-    <script src="assets/events/events.config.js"></script>
 
     <!-- ملفات البيانات - يمكن تعديلها بسهولة -->
-    <script src="data/config.js"></script>
-    <script src="data/products.js"></script>
-    <script src="data/portfolio.js"></script>
-    <script src="data/partners.js"></script>
-    <script src="data/services.js"></script>
-    <script src="data/testimonials.js"></script>
-    <script src="data/faq.js"></script>
+    <script defer src="data/config.js"></script>
+    <script defer src="data/products.js"></script>
+    <script defer src="data/portfolio.js"></script>
+    <script defer src="data/partners.js"></script>
+    <script defer src="data/services.js"></script>
+    <script defer src="data/testimonials.js"></script>
+    <script defer src="data/faq.js"></script>
 
     <!-- منطق التطبيق -->
     <!-- Note: js/airtable-config.js is optional — add it here manually when configuring Airtable credentials -->
-    <script src="js/airtable-service.js"></script>
+
 {% endblock %}
 
 {% block post_app_scripts %}
-    <script src="js/grainient.js"></script>
+    <script defer src="js/grainient.js"></script>
 {% endblock %}
 
 {% block body_open %}
 
-    <!-- ===== Event Splash Added ===== -->
-    <div id="event-splash" aria-hidden="true"></div>
 
     <!-- Global Ambient Glow Background (CSS-only, replaces JS canvas for performance) -->
     <div id="ambient-glow-bg" aria-hidden="true"></div>
@@ -1044,6 +1033,6 @@
     </footer>
 {% endblock %}
 
-{% block body_close %}    <!-- ===== Event Splash Added ===== -->
-    <script src="assets/events/core.splash.js"></script>
+{% block body_close %}
+
 {% endblock %}
